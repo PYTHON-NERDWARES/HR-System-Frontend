@@ -11,3 +11,25 @@
 5. Malak Khasawneh
 
 [Team Agreement](https://github.com/PYTHON-NERDWARES/Final/blob/main/TeamAgreement.md)
+
+[Software Requirements](https://github.com/PYTHON-NERDWARES/HR-System-Frontend/blob/main/Requirements.md)
+
+### Wireframe:
+
+![]()
+
+![]()
+
+![]()
+
+![]()
+
+![]()
+
+### Domain Modeling:
+
+![]()
+
+### Database Schema Diagram:
+
+![]()
