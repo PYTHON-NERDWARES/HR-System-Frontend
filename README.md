@@ -1,6 +1,9 @@
 # 401-Final-Project
-## Final
+
+## HR System Frontend
+
 ### Team Members
+
 1. **Feras Nawafleh, TL**
 2. Eslam Akram
 3. Anas AbuHatab
