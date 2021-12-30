@@ -1,20 +1,17 @@
-import React, { Component } from 'react'
-import Footer from '../components/Footer'
-import Login from '../components/Login'
-import Header from '../components/Header'
+import React from 'react'
+import DashBoard from './dashboard'
+import Footer from './Footer'
+import Header from './Header'
 
-
-export class Main extends Component {
-    render() {
-        return (
-            <div>
-                <Header/>
-                <Login/>
-                <Footer/>
-                
-            </div>
-        )
-    }
+const Main = () => {
+    
+    return (
+        <>
+        <Header />
+        <DashBoard />
+        <Footer />
+        </>
+    )
 }
 
 export default Main

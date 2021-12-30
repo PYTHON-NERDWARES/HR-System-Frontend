@@ -1,36 +1,49 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Head from 'next/head';
+import Image from 'next/image'
+import headerLogo from '../assets/finallogo1.png';
 
-export class Login extends Component {
-   
-        render() {
-            return (
-                <form>
-                    <h3>Sign In</h3>
-    
-                    <div className="form-group">
-                        <label>Email address</label>
-                        <input type="email" className="form-control" placeholder="Enter email" />
-                    </div>
-    
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input type="password" className="form-control" placeholder="Enter password" />
-                    </div>
-    
-                    <div className="form-group">
-                        <div className="custom-control custom-checkbox">
-                            <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                            <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                        </div>
-                    </div>
-    
-                    <button type="submit" className="btn btn-primary btn-block">Submit</button>
-                    <p className="forgot-password text-right">
-                        Forgot <a href="#">password?</a>
-                    </p>
-                </form>
-            );
-        }
+function LoginForm() {
+
+    const usernameChangeHandler = (e) => {
+        console.log(e.target.value);
+        
+        console.log(credintials);
     }
-export default Login
 
+    const passwordChangeHandler = (e) => {
+        console.log(e.target.value);
+        
+        console.log(credintials);
+    }
+
+    return (
+        <div className='flex w-full h-screen '>
+            <Head>
+                <title>Login</title>
+                <link rel='icon' href='/favicon.ico' />
+            </Head>
+            <div className='flex w-1/2 h-2/3 my-auto mx-auto bg-violet-700 rounded-lg shadow shadow-violet-500 border'>
+                <div className='w-2/5 h-full mt-10 '>
+                    <Image src={headerLogo} alt="" className=''  width={400} height={450} />
+                </div>
+                <form className=" flex flex-col w-1/2 gap-4 p-8 mx-auto mt-auto mb-auto text-center bg-gray-200 border-2 border-gray-400 rounded-lg text-md" onSubmit={e => logInHandler(e, credintials)} method='post'>
+                    <div className="flex flex-col ">
+                        <label className="mb-2 font-bold uppercase text-grey-darkest" htmlFor="username">User Name</label>
+                        <input className="px-3 py-2 border text-grey-darkest" type="text" name="username" id="username" placeholder="User Name" onChange={usernameChangeHandler} />
+                    </div>
+
+                    <div className="flex flex-col ">
+                        <label className="mb-2 font-bold uppercase text-grey-darkest" htmlFor="password">Password</label>
+                        <input className="px-3 py-2 border text-grey-darkest" type="password" name="password" id="password" placeholder="password" onChange={passwordChangeHandler} />
+                    </div>
+
+                    <button className="px-3 py-4 mt-8 uppercase bg-gray-500 rounded text-green hover:bg-gray-600 text-gray-50" type="submit">Sign In</button>
+                </form>
+            </div>
+
+        </div>
+    )
+}
+
+export default LoginForm

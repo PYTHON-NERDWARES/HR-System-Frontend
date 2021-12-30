@@ -1,15 +1,24 @@
-import  Main   from '../components/Main'
+import Main from '../components/Main'
+import LoginForm from '../components/Login'
+import { useSelector } from 'react-redux';
 
-export default function Home() {
+const Home = () => {
+  const state = useSelector((state) => {
+    return {
+      token: state.stateReducer.token,
+    }
+  });
+
+  if (!state.token) return (
+    <>
+      <LoginForm />
+    </>
+  )
   return (
-    <div >
-     
-      <Main/>
-         
-       <h3>React Hi</h3>
-            
-       
-    </div>
+    <>
+      <Main />
+    </>
   )
 }
 
+export default Home
