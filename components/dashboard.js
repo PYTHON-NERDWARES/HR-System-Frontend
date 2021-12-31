@@ -3,7 +3,9 @@ import Image from 'next/image'
 import headerLogo from '../assets/finallogo1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faUsers, faBuilding, faCalendarAlt, faUser, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons'
-import ChartsPage from './pieChart';
+import ChartApp from './pieChart';
+import p from '../assets/p.jpg'
+import AdminEventTable from './admineventtable';
 
 
 const DashBoard = () => {
@@ -70,18 +72,89 @@ const DashBoard = () => {
                 </div>
                 {/* Second Row */}
                 <div className='flex justify-evenly'>
+                    {/* Debartment Chart */}
                     <div className='py-3 bg-gray-100 mt-4 w-5/12 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                        <h3>Departments</h3>
-                        <div className='w-72 h-72 mx-auto'>
-                        <ChartsPage/>
+                        <div className='w-11/12 mx-auto '>
+                            <h3 className='text-left'>Departments</h3>
+                        </div>
+                        <hr />
+                        <div className='w-72 h-72 mx-auto my-3'>
+                            <ChartApp />
                         </div>
                     </div>
+                    {/* Branches and Managers */}
                     <div className='py-3 bg-gray-100 mt-4 w-5/12 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                        <Image src={headerLogo} alt="" className="bg-cover bg-center" width={100} height={120} />
-                        <p className='font-bold'>Welcome Admin</p>
+                        <div className='w-11/12 mx-auto '>
+                            <h3 className='text-left'>Managers & Branches</h3>
+                        </div>
+                        <hr />
+                        {/* manager profile */}
+                        <div className='overflow-y-auto h-[300px]'>
+                            <div className='w-11/12 mx-auto my-3 text-left'>
+                                <div className='flex'>
+                                    <div className='flex w-8/12'>
+                                        <Image src={p} alt="" className="bg-cover bg-center rounded-full" width={50} height={50} />
+                                        <p className=' my-auto ml-3 font-bold'>Ahmad Abdul Ghafour</p>
+                                    </div>
+                                    <p className='w-1/3 font-bold my-auto'>Al Zarqaa Branch</p>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div className='w-11/12 mx-auto my-3 text-left'>
+                                <div className='flex'>
+                                    <div className='flex w-8/12'>
+                                        <Image src={p} alt="" className="bg-cover bg-center rounded-full" width={50} height={50} />
+                                        <p className=' my-auto ml-3 font-bold'>Ahmad Abdul Ghafour</p>
+                                    </div>
+                                    <p className='w-1/3 font-bold my-auto'>Al Zarqaa Branch</p>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div className='w-11/12 mx-auto my-3 text-left'>
+                                <div className='flex'>
+                                    <div className='flex w-8/12'>
+                                        <Image src={p} alt="" className="bg-cover bg-center rounded-full" width={50} height={50} />
+                                        <p className=' my-auto ml-3 font-bold'>Ahmad Abdul Ghafour</p>
+                                    </div>
+                                    <p className='w-1/3 font-bold my-auto'>Al Zarqaa Branch</p>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div className='w-11/12 mx-auto my-3 text-left'>
+                                <div className='flex'>
+                                    <div className='flex w-8/12'>
+                                        <Image src={p} alt="" className="bg-cover bg-center rounded-full" width={50} height={50} />
+                                        <p className=' my-auto ml-3 font-bold'>Ahmad Abdul Ghafour</p>
+                                    </div>
+                                    <p className='w-1/3 font-bold my-auto'>Al Zarqaa Branch</p>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div className='w-11/12 mx-auto my-3 text-left'>
+                                <div className='flex'>
+                                    <div className='flex w-8/12'>
+                                        <Image src={p} alt="" className="bg-cover bg-center rounded-full" width={50} height={50} />
+                                        <p className=' my-auto ml-3 font-bold'>Ahmad Abdul Ghafour</p>
+                                    </div>
+                                    <p className='w-1/3 font-bold my-auto'>Al Zarqaa Branch</p>
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+
+
                     </div>
                 </div>
+                {/* Table */}
+                <div className='w-11/12 mx-auto mt-4'>
+                    <AdminEventTable />
+                </div>
             </div>
+
 
         </div>
     )

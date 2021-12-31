@@ -1,55 +1,38 @@
-import React from "react";
-import { Pie } from "react-chartjs-2";
-import { MDBContainer } from "mdbreact";
-import { Chart, ArcElement } from 'chart.js'
-Chart.register(ArcElement);
+import React from 'react';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
-class ChartsPage extends React.Component {
-    state = {
-        dataPie: {
-            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
-            datasets: [
-                {
-                    label: "sad",
-                    data: [300, 50, 100, 40, 120],
-                    backgroundColor: [
-                        "#F7464A",
-                        "#46BFBD",
-                        "#FDB45C",
-                        "#949FB1",
-                        "#4D5360",
-                        "#AC64AD"
-                    ],
-                    hoverBackgroundColor: [
-                        "#FF5A5E",
-                        "#5AD3D1",
-                        "#FFC870",
-                        "#A8B3C5",
-                        "#616774",
-                        "#DA92DB"
-                    ],
-                    pointBorderColor: "rgba(75,192,192,1)",
-                    pointBackgroundColor: "#fff",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                    pointHoverBorderColor: "rgba(220,220,220,1)",
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 1,
-                    pointHitRadius: 10,
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-                }
-            ]
-        }
-    }
+export const data = {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [
+        {
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                "#F7464A",
+                "#46BFBD",
+                "#FDB45C",
+                "#949FB1",
+                "#4D5360",
+                "#AC64AD"
+            ],
+            // borderColor: [
+            //     'rgba(255, 99, 132, 1)',
+            //     'rgba(54, 162, 235, 1)',
+            //     'rgba(255, 206, 86, 1)',
+            //     'rgba(75, 192, 192, 1)',
+            //     'rgba(153, 102, 255, 1)',
+            //     'rgba(255, 159, 64, 1)',
+            // ],
+            borderWidth: 1,
+        },
+    ],
+};
 
-    render() {
-        return (
-            <MDBContainer>
-                <Pie data={this.state.dataPie} options={{ responsive: true }} />
-            </MDBContainer>
-        );
-    }
+const ChartApp = () => {
+    return <Pie data={data} />;
 }
 
-export default ChartsPage;
+export default ChartApp
