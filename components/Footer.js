@@ -17,11 +17,11 @@ const Footer = () => {
                         </a>
                     </div>
                     <div className='flex my-auto w-1/2 justify-evenly'>
-                        <Link href="#"><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faFacebook} style={{ width: "30px", height: '30px' }} /></Link>
-                        <Link href="#"><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faTwitter} style={{ width: "30px", height: '30px' }} /></Link>
-                        <Link href="#"><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faYoutube} style={{ width: "30px", height: '30px' }} /></Link>
-                        <Link href="#"><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faInstagram} style={{ width: "30px", height: '30px' }} /></Link>
-                        <Link href="#"><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faLinkedin} style={{ width: "30px", height: '30px' }} /></Link>
+                        <Link href=""><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faFacebook} style={{ width: "30px", height: '30px' }} /></Link>
+                        <Link href=""><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faTwitter} style={{ width: "30px", height: '30px' }} /></Link>
+                        <Link href=""><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faYoutube} style={{ width: "30px", height: '30px' }} /></Link>
+                        <Link href=""><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faInstagram} style={{ width: "30px", height: '30px' }} /></Link>
+                        <Link href=""><FontAwesomeIcon className='text-gray-100 hover:text-yellow-400' icon={faLinkedin} style={{ width: "30px", height: '30px' }} /></Link>
                     </div>
                 </div>
                 <div className='flex w-3/4 mx-auto justify-evenly'>
@@ -41,7 +41,7 @@ const Footer = () => {
             <div className='flex bg-violet-800 h-10 justify-items-center'>
                 <div className='flex justify-between w-3/4 mx-auto my-auto'>
                     <div className='text-white font-bold'>Copyright © 2022 <a className='text-yellow-400 no-underline hover:text-white font-bold' href="#">FlawlessMasters.co</a></div>
-                    <div class="policy_terms">
+                    <div>
                         <a className='text-yellow-400 no-underline hover:text-white font-bold' href="#">Privacy policy</a>
                     </div>
                 </div>

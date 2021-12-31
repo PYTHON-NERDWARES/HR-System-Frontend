@@ -2,19 +2,36 @@ import React from 'react'
 import Head from 'next/head';
 import Image from 'next/image'
 import headerLogo from '../assets/finallogo1.png';
+import {useSelector, useDispatch} from 'react-redux';
+import { getCredintials } from '../store/states';
+import {postRequest} from '../store/states'
+
+
+const baseUrl = process.env.NEXT_PUBLIC_HOST;
+const tokenUrl = baseUrl + 'api/token/';
 
 function LoginForm() {
 
+    const dispatch = useDispatch();
+    
     const usernameChangeHandler = (e) => {
         console.log(e.target.value);
+        // console.log(credintials);
         
-        console.log(credintials);
     }
 
     const passwordChangeHandler = (e) => {
         console.log(e.target.value);
-        
-        console.log(credintials);
+        // console.log(credintials);
+
+    }
+
+    const logInHandler = (e) =>{
+        e.preventDefault()        
+        let username = e.target.username.value
+        let password = e.target.password.value
+        dispatch(getCredintials({username,password}))
+        dispatch(postRequest(tokenUrl,{username,password}))
     }
 
     return (
@@ -27,7 +44,7 @@ function LoginForm() {
                 <div className='w-2/5 h-full mt-10 '>
                     <Image src={headerLogo} alt="" className=''  width={400} height={450} />
                 </div>
-                <form className=" flex flex-col w-1/2 gap-4 p-8 mx-auto mt-auto mb-auto text-center bg-gray-200 border-2 border-gray-400 rounded-lg text-md" onSubmit={e => logInHandler(e, credintials)} method='post'>
+                <form className=" flex flex-col w-1/2 gap-4 p-8 mx-auto mt-auto mb-auto text-center bg-gray-200 border-2 border-gray-400 rounded-lg text-md" onSubmit={e => logInHandler(e)} method='post'>
                     <div className="flex flex-col ">
                         <label className="mb-2 font-bold uppercase text-grey-darkest" htmlFor="username">User Name</label>
                         <input className="px-3 py-2 border text-grey-darkest" type="text" name="username" id="username" placeholder="User Name" onChange={usernameChangeHandler} />
@@ -47,3 +64,4 @@ function LoginForm() {
 }
 
 export default LoginForm
+

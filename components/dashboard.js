@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react';
 import Image from 'next/image'
 import headerLogo from '../assets/finallogo1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,9 +7,34 @@ import { faHome, faUsers, faBuilding, faCalendarAlt, faUser, faHandHoldingUsd } 
 import ChartApp from './pieChart';
 import p from '../assets/p.jpg'
 import AdminEventTable from './admineventtable';
+import { useSelector, useDispatch } from 'react-redux';
+import { getRequest } from '../store/states'
+
+
+const baseUrl = process.env.NEXT_PUBLIC_HOST;
+const hrURL = baseUrl + 'hr/'
 
 
 const DashBoard = () => {
+    const state = useSelector((state) => {
+        return {
+            data: state.stateReducer.data,
+            token: state.stateReducer.token,
+        }
+    });
+    console.log(state.token.token.access);
+    console.log(state.data.payload);
+    const config = {
+        headers: { "Authorization": `Bearer ${state.token.token.access}` }
+    }
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log(hrURL);
+        dispatch(getRequest(hrURL, config))
+    }, [state.data.data])
+
+
     return (
         <div className='flex mb-10'>
             {/* Left Side */}
@@ -46,7 +72,10 @@ const DashBoard = () => {
                         </div>
                         <div className='w-3/4'>
                             <p className='m-0 font-bold text-xl'>Employees</p>
-                            <p className='m-0 font-bold'>700</p>
+                            {
+                                state.data.payload &&
+                                <p className='m-0 font-bold'>{state.data.payload.length}</p>
+                            }
                         </div>
                     </div>
                     {/* companies */}

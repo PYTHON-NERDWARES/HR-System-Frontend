@@ -9,7 +9,7 @@ export const data = {
     datasets: [
         {
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [1, 1, 3, 5, 2, 3],
             backgroundColor: [
                 "#F7464A",
                 "#46BFBD",
