@@ -4,7 +4,9 @@ import Footer from './Footer'
 import Header from './Header'
 import jsonwebtoken from 'jsonwebtoken';
 import { useSelector } from 'react-redux';
-import EmployeeDashBoard from './EmployeeDashboard';
+import EmployeeDashBoard from './EmployeeDashboard'
+import EmployeesDetails from './EmployeesDetails'
+import EmployeesPage from './EmployeesPage'
 
 
 
@@ -19,9 +21,13 @@ const Main = () => {
     return (
         <>
         <Header />
-        {
+        {/* {
             decodedPayload.role == 'HR' ? <DashBoard /> : <EmployeeDashBoard/>
-        }
+        } */}
+        <EmployeesPage/>
+        {/* <EmployeeDashBoard/> */}
+        
+        {/* <EmployeesDetails/> */}
         <Footer />
         </>
     )
