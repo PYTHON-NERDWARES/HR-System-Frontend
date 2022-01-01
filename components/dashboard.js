@@ -9,29 +9,43 @@ import p from '../assets/p.jpg'
 import AdminEventTable from './admineventtable';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRequest } from '../store/states'
+import jsonwebtoken from 'jsonwebtoken';
+
 
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
 const hrURL = baseUrl + 'hr/'
+const brURL = hrURL + 'branch'
+const imURL = process.env.NEXT_PUBLIC_IMAGE_LINK
+const dpURL = hrURL + 'department'
+
 
 
 const DashBoard = () => {
     const state = useSelector((state) => {
+        // console.log(66666,state);
         return {
             data: state.stateReducer.data,
             token: state.stateReducer.token,
+            branches: state.stateReducer.branches,
+            totalsalary: state.stateReducer.totalsalary,
+            departments: state.stateReducer.departments,
         }
     });
-    console.log(state.token.token.access);
-    console.log(state.data.payload);
+    let decodedPayload = jsonwebtoken.decode(state.token.token.access)
+    // console.log(state.token.token.access);
+    console.log(111111,state.data);
+    // console.log(process.env.NEXT_PUBLIC_IMAGE_LINK);
     const config = {
         headers: { "Authorization": `Bearer ${state.token.token.access}` }
     }
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(hrURL);
-        dispatch(getRequest(hrURL, config))
+        // console.log(hrURL);
+        dispatch(getRequest(hrURL, brURL,dpURL, config))
+        // dispatch(getRequestBranch(brURL, config))
+
     }, [state.data.data])
 
 
@@ -47,8 +61,8 @@ const DashBoard = () => {
 
                 {/* Admin profile */}
                 <div className='py-3 bg-gray-100 mt-4 ml-10 px-10 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                    <Image src={headerLogo} alt="" className="bg-cover bg-center rounded-full" width={100} height={100} />
-                    <p className='font-bold'>Welcome Admin</p>
+                    <img src={imURL + decodedPayload.Personal_Picture} alt="" className="bg-cover bg-center rounded-full mx-auto" style={{width:'100px' , height:'100px'}} />
+                    <p className='font-bold'>Welcome {decodedPayload.username}</p>
                 </div>
 
                 {/* buttons */}
@@ -85,7 +99,10 @@ const DashBoard = () => {
                         </div>
                         <div className='w-3/4'>
                             <p className='m-0 font-bold text-xl'>Branches</p>
-                            <p className='m-0 font-bold'>30</p>
+                            {
+                                state.branches.branches &&
+                                <p className='m-0 font-bold'>{state.branches.branches.length}</p>
+                            }
                         </div>
                     </div>
                     {/* Salary */}
@@ -95,7 +112,10 @@ const DashBoard = () => {
                         </div>
                         <div className='w-3/4'>
                             <p className='m-0 font-bold text-xl'>Total Salary</p>
-                            <p className='m-0 font-bold'>500000$</p>
+                            {
+                                state.totalsalary.payload &&
+                                <p className='m-0 font-bold'>{state.totalsalary.payload} $</p>
+                            }
                         </div>
                     </div>
                 </div>
@@ -108,7 +128,10 @@ const DashBoard = () => {
                         </div>
                         <hr />
                         <div className='w-72 h-72 mx-auto my-3'>
+                            {
+                                state.data.payload && 
                             <ChartApp />
+                            }
                         </div>
                     </div>
                     {/* Branches and Managers */}

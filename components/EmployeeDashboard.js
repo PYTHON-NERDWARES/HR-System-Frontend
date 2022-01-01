@@ -5,10 +5,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faUsers, faBuilding, faCalendarAlt, faUser, faHandHoldingUsd , faLeaf , faRegistered } from '@fortawesome/free-solid-svg-icons'
 import ChartApp from './pieChart';
 import p from '../assets/p.jpg'
+import jsonwebtoken from 'jsonwebtoken';
 import AdminEventTable from './admineventtable';
 
 
 const EmployeeDashBoard = () => {
+    const state = useSelector((state) => {
+        return {
+          token: state.stateReducer.token,
+        }
+      });
+    let decodedPayload = jsonwebtoken.decode(state.token.token.access)
     return (
         <div className='flex mb-10'>
             {/* Left Side */}

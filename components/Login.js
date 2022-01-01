@@ -4,7 +4,7 @@ import Image from 'next/image'
 import headerLogo from '../assets/finallogo1.png';
 import {useSelector, useDispatch} from 'react-redux';
 import { getCredintials } from '../store/states';
-import {postRequest} from '../store/states'
+import {postRequest , getBrNo} from '../store/states'
 
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;

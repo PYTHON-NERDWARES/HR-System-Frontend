@@ -15,7 +15,7 @@ const Main = () => {
         }
       });
     let decodedPayload = jsonwebtoken.decode(state.token.token.access)
-    console.log(decodedPayload);
+    // console.log(decodedPayload);
     return (
         <>
         <Header />
