@@ -4,6 +4,8 @@ import { useSelector , useDispatch } from 'react-redux';
 import cookie from 'react-cookies'
 import { useEffect } from 'react';
 import {getToken} from '../store/states'
+import swal from 'sweetalert';
+
 
 const Home = () => {
 

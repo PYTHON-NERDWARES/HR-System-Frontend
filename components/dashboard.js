@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getRequest, rightSide } from '../store/states'
 import jsonwebtoken from 'jsonwebtoken';
 import EmployeesTable from './EmployeInfoTable'
+import CreateModel from './createmodel';
 
 
 
@@ -25,8 +26,8 @@ const dpURL = hrURL + 'department'
 
 const DashBoard = () => {
     const dispatch = useDispatch();
-    
-    
+
+
     const state = useSelector((state) => {
         // console.log(66666,state);
         return {
@@ -36,6 +37,7 @@ const DashBoard = () => {
             totalsalary: state.stateReducer.totalsalary,
             departments: state.stateReducer.departments,
             rightside: state.stateReducer.rightside,
+            open: state.stateReducer.open
         }
     });
     let decodedPayload = jsonwebtoken.decode(state.token.token.access)
@@ -45,7 +47,7 @@ const DashBoard = () => {
     const config = {
         headers: { "Authorization": `Bearer ${state.token.token.access}` }
     }
-  
+
 
     useEffect(() => {
         // console.log(hrURL);
@@ -67,6 +69,7 @@ const DashBoard = () => {
 
     return (
         <div className='flex mb-10'>
+            {state.open && <CreateModel />}
             {/* Left Side */}
             <div className='z-50 w-1/4 sticky top-0 h-[600px]'>
                 {/* Home */}
@@ -87,11 +90,11 @@ const DashBoard = () => {
                         state.rightSide == "Dashboard" &&
 
                     } */}
-                    <button autoFocus onClick={() => RightSide("Dashboard")} className='focus:bg-yellow-400 bg-gray-100 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center rounded-tl-md'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faHome} style={{ width: "30px", height: '30px' }} />Dashboard</button>
-                    <button onClick={() => RightSide("Employees")} className='focus:bg-yellow-400 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center rounded-tr-md'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faUsers} style={{ width: "30px", height: '30px' }} />Employees</button>
-                    <button onClick={() => RightSide("Branchs")} className='focus:bg-yellow-400 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faBuilding} style={{ width: "30px", height: '30px' }} />Branches</button>
-                    <button onClick={() => RightSide("Calendar")} className='focus:bg-yellow-400 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faCalendarAlt} style={{ width: "30px", height: '30px' }} />Calendar</button>
-                    <button onClick={() => RightSide("Profile")} className='focus:bg-yellow-400 py-2 border-2 w-full hover:bg-yellow-400 text-center rounded-b-md'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faUser} style={{ width: "30px", height: '30px' }} />Profile</button>
+                    <button autoFocus onClick={() => RightSide("Dashboard")} className='focus:bg-yellow-400 bg-gray-100 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center rounded-tl-md'><FontAwesomeIcon className='text-gray-800 mx-auto block' icon={faHome} style={{ width: "30px", height: '30px' }} />Dashboard</button>
+                    <button onClick={() => RightSide("Employees")} className='focus:bg-yellow-400 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center rounded-tr-md'><FontAwesomeIcon className='text-gray-800 mx-auto block' icon={faUsers} style={{ width: "30px", height: '30px' }} />Employees</button>
+                    <button onClick={() => RightSide("Branchs")} className='focus:bg-yellow-400 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center'><FontAwesomeIcon className='text-gray-800 mx-auto block' icon={faBuilding} style={{ width: "30px", height: '30px' }} />Branches</button>
+                    <button onClick={() => RightSide("Calendar")} className='focus:bg-yellow-400 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center'><FontAwesomeIcon className='text-gray-800 mx-auto block' icon={faCalendarAlt} style={{ width: "30px", height: '30px' }} />Calendar</button>
+                    <button onClick={() => RightSide("Profile")} className='focus:bg-yellow-400 py-2 border-2 w-full hover:bg-yellow-400 text-center rounded-b-md'><FontAwesomeIcon className='text-gray-800 mx-auto block' icon={faUser} style={{ width: "30px", height: '30px' }} />Profile</button>
                 </div>
             </div>
 
@@ -210,6 +213,7 @@ const DashBoard = () => {
                 state.rightside == "Employees" &&
                 <EmployeesTable />
             }
+
 
 
 

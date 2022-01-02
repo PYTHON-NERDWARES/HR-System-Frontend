@@ -13,6 +13,8 @@ const initState = {
     totalsalary: 0,
     salary: 0,
     rightside: 'Dashboard',
+    open:false,
+    addorupdate:'',
 }
 
 const TotalSalary = (data) => {
@@ -35,7 +37,11 @@ export const postRequest = function (api, obj) {
     };
 };
 
-
+export const deleteRequest = function (api,config) {
+    return (dispatch) => {
+        return axios.delete(api, config)
+    };
+};
 
 
 export const getRequest = function (api1, api2, api3, config) {
@@ -68,10 +74,24 @@ export const getRequest = function (api1, api2, api3, config) {
 //     };
 // };
 
+export const addOrUpdate = (str) => {
+    return {
+        type: 'ADDORUPDATE',
+        payload: str
+    }
+}
+
 export const rightSide = (right) => {
     return {
         type: 'RIGHTSIDE',
         payload: right
+    }
+}
+
+export const openModel = (model) => {
+    return {
+        type: 'OPENMODEL',
+        payload: model
     }
 }
 
@@ -134,6 +154,8 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
             }
 
         case 'GETTOKEN':
@@ -149,6 +171,8 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
             }
 
         case 'GETEMPNO':
@@ -163,6 +187,8 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
             }
 
         case 'GETBRNO':
@@ -177,6 +203,8 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
             }
 
         case 'SETTOTALSALARY':
@@ -191,6 +219,8 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: payload,
                 salary: state.salary,
                 rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
             }
 
         case 'GETDEPNO':
@@ -205,6 +235,8 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
             }
 
         case 'RIGHTSIDE':
@@ -219,6 +251,40 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: payload,
+                open:state.open,
+                addorupdate: state.addorupdate,
+            }
+
+            case 'OPENMODEL':
+            // console.log(55555,payload);
+            return {
+                credintials: { username: state.username, password: state.password },
+                token: state.token,
+                data: state.data,
+                branches: state.branches,
+                departments: state.departments,
+                employees: state.employees,
+                totalsalary: state.totalsalary,
+                salary: state.salary,
+                rightside: state.rightside,
+                open:payload,
+                addorupdate: state.addorupdate,
+            }
+
+            case 'ADDORUPDATE':
+            // console.log(55555,payload);
+            return {
+                credintials: { username: state.username, password: state.password },
+                token: state.token,
+                data: state.data,
+                branches: state.branches,
+                departments: state.departments,
+                employees: state.employees,
+                totalsalary: state.totalsalary,
+                salary: state.salary,
+                rightside: state.rightside,
+                open:state.open,
+                addorupdate: payload,
             }
 
         default:
