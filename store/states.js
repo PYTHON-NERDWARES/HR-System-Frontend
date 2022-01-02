@@ -1,5 +1,6 @@
 import axios from "axios"
 import cookie from 'react-cookies'
+import jsonwebtoken from 'jsonwebtoken';
 
 
 
@@ -19,6 +20,7 @@ const initState = {
 
 const TotalSalary = (data) => {
     let total = 0
+    console.log(data);
     data.map(element => {
         total += element.salary
     })
@@ -29,10 +31,10 @@ const TotalSalary = (data) => {
 export const postRequest = function (api, obj) {
     return (dispatch) => {
         return axios.post(api, obj).then((response) => {
-            console.log('access',response.data);
+            // console.log('access',response.data);
             dispatch(getToken({ token: response.data }));
             cookie.save('token', response.data)
-            console.log(cookie.load('token'));
+            // console.log(cookie.load('token'));
         });
     };
 };
@@ -46,22 +48,44 @@ export const deleteRequest = function (api,config) {
 
 export const getRequest = function (api1, api2, api3, config) {
     return (dispatch) => {
-        return (
-            axios.get(api1, config).then((response) => {
-                dispatch(getEmpNo({ payload: response.data }));
-                // console.log(222222222, response.data);
-                let total = TotalSalary(response.data)
-                // console.log(333333, total);
-                dispatch(setTotalSalary({ payload: total }));
-            }),
-            axios.get(api2, config).then((response) => {
-                dispatch(getBrNo({ branches: response.data }))
-            }),
-            axios.get(api3, config).then((response) => {
-                // console.log(44444, response.data);
-                dispatch(getDepNo({ departments: response.data }))
-            })
-        )
+        cookie.load('token')
+        console.log(cookie.load('token'));
+        let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
+        if(decodedPayload.user_id == "HR"){
+            return (
+                axios.get(api1, config).then((response) => {
+                    dispatch(getEmpNo({ payload: response.data }));
+                    // console.log(222222222, response.data);
+                    let total = TotalSalary(response.data)
+                    // console.log(333333, total);
+                    dispatch(setTotalSalary({ payload: total }));
+                }),
+                axios.get(api2, config).then((response) => {
+                    dispatch(getBrNo({ branches: response.data }))
+                }),
+                axios.get(api3, config).then((response) => {
+                    // console.log(44444, response.data);
+                    dispatch(getDepNo({ departments: response.data }))
+                })
+            )
+        }
+        else{
+            return (
+                axios.get(api1, config).then((response) => {
+                    dispatch(getEmpNo({ payload: response.data }));
+                    // console.log(222222222, response.data
+                    // console.log(333333, total);
+                    dispatch(setTotalSalary({ payload: response.data.salary }));
+                }),
+                axios.get(api2, config).then((response) => {
+                    dispatch(getBrNo({ branches: response.data }))
+                }),
+                axios.get(api3, config).then((response) => {
+                    // console.log(44444, response.data);
+                    dispatch(getDepNo({ departments: response.data }))
+                })
+            )
+        }
     };
 };
 

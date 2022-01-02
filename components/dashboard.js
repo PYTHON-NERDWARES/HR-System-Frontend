@@ -41,9 +41,6 @@ const DashBoard = () => {
         }
     });
     let decodedPayload = jsonwebtoken.decode(state.token.token.access)
-    // console.log(state.token.token.access);
-    console.log(111111, state);
-    // console.log(process.env.NEXT_PUBLIC_IMAGE_LINK);
     const config = {
         headers: { "Authorization": `Bearer ${state.token.token.access}` }
     }
