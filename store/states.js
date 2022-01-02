@@ -1,17 +1,18 @@
 import axios from "axios"
-
+import cookie from 'react-cookies'
 
 
 
 const initState = {
     credintials: { username: '', password: '' },
-    token: '',
+    token: "" ,
     data: [],
     branches: [],
     departments: [],
     employees: 0,
     totalsalary: 0,
     salary: 0,
+    rightside: 'Dashboard',
 }
 
 const TotalSalary = (data) => {
@@ -26,11 +27,14 @@ const TotalSalary = (data) => {
 export const postRequest = function (api, obj) {
     return (dispatch) => {
         return axios.post(api, obj).then((response) => {
-            console.log(response);
+            console.log('access',response.data);
             dispatch(getToken({ token: response.data }));
+            cookie.save('token', response.data)
+            console.log(cookie.load('token'));
         });
     };
 };
+
 
 
 
@@ -48,10 +52,10 @@ export const getRequest = function (api1, api2, api3, config) {
                 dispatch(getBrNo({ branches: response.data }))
             }),
             axios.get(api3, config).then((response) => {
-                console.log(44444, response.data);
+                // console.log(44444, response.data);
                 dispatch(getDepNo({ departments: response.data }))
             })
-            )
+        )
     };
 };
 
@@ -63,6 +67,13 @@ export const getRequest = function (api1, api2, api3, config) {
 //         });
 //     };
 // };
+
+export const rightSide = (right) => {
+    return {
+        type: 'RIGHTSIDE',
+        payload: right
+    }
+}
 
 export const setTotalSalary = (total) => {
     return {
@@ -112,7 +123,7 @@ const stateReducer = (state = initState, action) => {
 
     switch (type) {
         case 'CREDINTIALS':
-            console.log(payload);
+            // console.log(payload);
             return {
                 credintials: { username: payload.username, password: payload.password },
                 token: state.token,
@@ -122,6 +133,7 @@ const stateReducer = (state = initState, action) => {
                 employees: state.employees,
                 totalsalary: state.totalsalary,
                 salary: state.salary,
+                rightside: state.rightside,
             }
 
         case 'GETTOKEN':
@@ -136,6 +148,7 @@ const stateReducer = (state = initState, action) => {
                 employees: state.employees,
                 totalsalary: state.totalsalary,
                 salary: state.salary,
+                rightside: state.rightside,
             }
 
         case 'GETEMPNO':
@@ -149,6 +162,7 @@ const stateReducer = (state = initState, action) => {
                 employees: state.employees,
                 totalsalary: state.totalsalary,
                 salary: state.salary,
+                rightside: state.rightside,
             }
 
         case 'GETBRNO':
@@ -162,6 +176,7 @@ const stateReducer = (state = initState, action) => {
                 employees: state.employees,
                 totalsalary: state.totalsalary,
                 salary: state.salary,
+                rightside: state.rightside,
             }
 
         case 'SETTOTALSALARY':
@@ -175,10 +190,11 @@ const stateReducer = (state = initState, action) => {
                 employees: state.employees,
                 totalsalary: payload,
                 salary: state.salary,
+                rightside: state.rightside,
             }
 
         case 'GETDEPNO':
-                console.log(55555,payload);
+            // console.log(55555,payload);
             return {
                 credintials: { username: state.username, password: state.password },
                 token: state.token,
@@ -188,6 +204,21 @@ const stateReducer = (state = initState, action) => {
                 employees: state.employees,
                 totalsalary: state.totalsalary,
                 salary: state.salary,
+                rightside: state.rightside,
+            }
+
+        case 'RIGHTSIDE':
+            // console.log(55555,payload);
+            return {
+                credintials: { username: state.username, password: state.password },
+                token: state.token,
+                data: state.data,
+                branches: state.branches,
+                departments: state.departments,
+                employees: state.employees,
+                totalsalary: state.totalsalary,
+                salary: state.salary,
+                rightside: payload,
             }
 
         default:

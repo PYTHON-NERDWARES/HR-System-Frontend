@@ -1,8 +1,22 @@
 import Main from '../components/Main'
 import LoginForm from '../components/Login'
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch } from 'react-redux';
+import cookie from 'react-cookies'
+import { useEffect } from 'react';
+import {getToken} from '../store/states'
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (cookie.load('token')) {
+      console.log('tooken1', cookie.load('token'));
+      dispatch(getToken({token : cookie.load('token')}))
+    }
+
+  }, [])
+
   const state = useSelector((state) => {
     return {
       token: state.stateReducer.token,

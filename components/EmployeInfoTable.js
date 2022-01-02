@@ -1,39 +1,100 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
+import { MDBDataTable } from 'mdbreact';
+import MaterialTable from "material-table";
 
-const AdminEventTable = () => {
+
+const EmployeesTable = () => {
+    const data = [
+        { name: "asdadadsadav sdadadadad", email: "john@gmail.com", age: 12, gender: "Male" },
+        { name: "Bren", email: "bren@gmail.com", age: 24, gender: "Male" },
+        { name: "Marry", email: "marry@gmail.com", age: 18, gender: "Female" },
+        { name: "Shohail", email: "shohail@gmail.com", age: 25, gender: "Male" },
+        { name: "Aseka", email: "aseka@gmail.com", age: 19, gender: "Female" },
+        { name: "Meuko", email: "meuko@gmail.com", age: 12, gender: "Female" },
+      ];
+      const columns = [
+        {
+          title: "Name",
+          field: "name",
+        },
+        {
+            title: "Name",
+            field: "name",
+          },
+          {
+            title: "Name",
+            field: "name",
+          },
+          {
+            title: "Name",
+            field: "name",
+          },
+          {
+            title: "Name",
+            field: "name",
+          },
+          {
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },{
+            title: "Name",
+            field: "name",
+          },
+        {
+          title: "Email",
+          field: "email",
+        },
+        {
+          title: "Age",
+          field: "age",
+        },
+        {
+          title: "Gender",
+          field: "gender",
+        },
+      ];
+    
     return (
-        <div>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        
-                        <th>Full Name</th>
-                        <th>social status</th>
-                        <th>position </th>
-                        <th>Birthday </th>
-                        <th>National ID / passport No </th>
-                        <th>Address </th>
-                        <th>Nationality</th>
+        <div className='w-3/4'>
+            <div className='w-11/12 mx-auto mt-4'>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+            <MaterialTable className="" title="Employee Details" data={data} columns={columns} options={{ search: true, paging: true, filtering: true, exportButton: true, doubleHorizontalScroll:true ,  }}/>
+            </div>
+            
 
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ahmad Abdul Ghafour</td>
-                        <td>Married</td>
-                        <td>Software Engineer</td>
-                        <td>1/1/1985</td>
-                        <td>9855588548</td>
-                        <td>Amman - Abu nsair - Bno.25</td>
-                        <td>Syrian</td>
-                    </tr>
-                                     
-                </tbody>
-            </Table>
         </div>
     )
 }
 
-export default AdminEventTable
+export default EmployeesTable

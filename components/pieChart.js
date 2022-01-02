@@ -32,9 +32,9 @@ const ChartApp = () => {
         }, {});
         return newObj;
     }
-    console.log(state.data.payload);
+    // console.log(state.data.payload);
     const dataSet = groupBy(state.data.payload, "department")
-    console.log(8888,dataSet);
+    // console.log(8888,dataSet);
     const data = {
         labels: labels,
         datasets: [
