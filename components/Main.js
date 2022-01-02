@@ -3,6 +3,8 @@ import DashBoard from './dashboard'
 import EmployeeDashBoard from './EmployeeDashboard'
 import EmployeesDetails from './EmployeesDetails'
 import Branch from './Branch'
+import Form from './EmployeeForm'
+import Testform from './Testform'
 
 import EmployeesPage from './EmployeesPage'
 import Footer from './Footer'
@@ -17,7 +19,10 @@ const Main = () => {
         {/* <EmployeeDashBoard/> */}
         
         {/* <EmployeesDetails/> */}
-        <Branch/>
+        {/* <Branch/> */}
+        {/* <Form/> */}
+        <Testform/>
+
         <Footer />
         </>
     )
