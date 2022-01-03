@@ -31,10 +31,8 @@ const TotalSalary = (data) => {
 export const postRequest = function (api, obj) {
     return (dispatch) => {
         return axios.post(api, obj).then((response) => {
-            // console.log('access',response.data);
             dispatch(getToken({ token: response.data }));
             cookie.save('token', response.data)
-            // console.log(cookie.load('token'));
         });
     };
 };
@@ -48,23 +46,18 @@ export const deleteRequest = function (api,config) {
 
 export const getRequest = function (api1, api2, api3, config) {
     return (dispatch) => {
-        cookie.load('token')
-        console.log(cookie.load('token'));
         let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
-        if(decodedPayload.user_id == "HR"){
+        if(decodedPayload.role == "HR"){
             return (
                 axios.get(api1, config).then((response) => {
                     dispatch(getEmpNo({ payload: response.data }));
-                    // console.log(222222222, response.data);
                     let total = TotalSalary(response.data)
-                    // console.log(333333, total);
                     dispatch(setTotalSalary({ payload: total }));
                 }),
                 axios.get(api2, config).then((response) => {
                     dispatch(getBrNo({ branches: response.data }))
                 }),
                 axios.get(api3, config).then((response) => {
-                    // console.log(44444, response.data);
                     dispatch(getDepNo({ departments: response.data }))
                 })
             )
@@ -73,15 +66,12 @@ export const getRequest = function (api1, api2, api3, config) {
             return (
                 axios.get(api1, config).then((response) => {
                     dispatch(getEmpNo({ payload: response.data }));
-                    // console.log(222222222, response.data
-                    // console.log(333333, total);
                     dispatch(setTotalSalary({ payload: response.data.salary }));
                 }),
                 axios.get(api2, config).then((response) => {
                     dispatch(getBrNo({ branches: response.data }))
                 }),
                 axios.get(api3, config).then((response) => {
-                    // console.log(44444, response.data);
                     dispatch(getDepNo({ departments: response.data }))
                 })
             )
@@ -89,14 +79,7 @@ export const getRequest = function (api1, api2, api3, config) {
     };
 };
 
-// export const getRequestBranch = function (api, config) {
-//     return (dispatch) => {
-//         return axios.get(api, config).then((response) => {
-//             console.log(222222,response);
-//             dispatch(getBrNo({ branches: response.data }));
-//         });
-//     };
-// };
+
 
 export const addOrUpdate = (str) => {
     return {
@@ -167,7 +150,6 @@ const stateReducer = (state = initState, action) => {
 
     switch (type) {
         case 'CREDINTIALS':
-            // console.log(payload);
             return {
                 credintials: { username: payload.username, password: payload.password },
                 token: state.token,
@@ -183,7 +165,6 @@ const stateReducer = (state = initState, action) => {
             }
 
         case 'GETTOKEN':
-            // console.log();
 
             return {
                 credintials: { username: state.username, password: state.password },
@@ -248,7 +229,6 @@ const stateReducer = (state = initState, action) => {
             }
 
         case 'GETDEPNO':
-            // console.log(55555,payload);
             return {
                 credintials: { username: state.username, password: state.password },
                 token: state.token,
@@ -264,7 +244,6 @@ const stateReducer = (state = initState, action) => {
             }
 
         case 'RIGHTSIDE':
-            // console.log(55555,payload);
             return {
                 credintials: { username: state.username, password: state.password },
                 token: state.token,
@@ -280,7 +259,6 @@ const stateReducer = (state = initState, action) => {
             }
 
             case 'OPENMODEL':
-            // console.log(55555,payload);
             return {
                 credintials: { username: state.username, password: state.password },
                 token: state.token,
@@ -296,7 +274,6 @@ const stateReducer = (state = initState, action) => {
             }
 
             case 'ADDORUPDATE':
-            // console.log(55555,payload);
             return {
                 credintials: { username: state.username, password: state.password },
                 token: state.token,
