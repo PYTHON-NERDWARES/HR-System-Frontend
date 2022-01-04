@@ -42,148 +42,129 @@ const DashBoard = () => {
                 <div className='flex justify-evenly'>
                     {/* Basic info */}
                     <div className='py-3 bg-gray-100 mt-4 w-5/12 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                        <div className='w-11/12 mx-auto '>
-                            <h3 className='text-left'>Basic Info:</h3>
-                        </div>
-                        <hr />
-                        <div className=' mx-auto my-3'>
-                            {/* < EmployeeInfoTable /> */}
-                            <div className='overflow-y-auto h-[300px]'>
-                                <div className='w-11/12 mx-auto my-3 text-left'>
-                                    <div className='flex'>
-                                        <div className='flex w-8/12'>
-                                            <p className=' my-auto ml-3 font-bold'>Full Name: </p>
-                                        </div>
-                                        <p className='w-1/3 font-bold my-auto'>Ahmad Abdul Ghafour</p>
-                                    </div>
-                                    <hr />
-                                    <div className='flex'>
-                                        <div className='flex w-8/12'>
-                                            <p className=' my-auto ml-3 font-bold'>Social Status: </p>
-                                        </div>
-                                        <p className='w-1/3 font-bold my-auto'>Married</p>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className='flex'>
-                                    <div className='flex w-8/12'>
-                                        <p className=' my-auto ml-3 font-bold'>Position: </p>
-                                    </div>
-                                    <p className='w-1/3 font-bold my-auto'>Software Engineer </p>
-                                </div>
-                                <hr />
-                                <div className='flex'>
-                                    <div className='flex w-8/12'>
-                                        <p className=' my-auto ml-3 font-bold'>Birthday: </p>
-                                    </div>
-                                    <p className='w-1/3 font-bold my-auto'>1/1/1985 </p>
-                                </div>
-                                <hr />
-                                <div className='flex'>
-                                    <div className='flex w-8/12'>
-                                        <p className=' my-auto ml-3 font-bold'>National ID / passport No: </p>
-                                    </div>
-                                    <p className='w-1/3 font-bold my-auto'>9855588548 </p>
-                                </div>
-                                <hr />
-                                <div className='flex'>
-                                    <div className='flex w-8/12'>
-                                        <p className=' my-auto ml-3 font-bold'>Address: </p>
-                                    </div>
-                                    <p className='w-1/3 font-bold my-auto'>Amman - Abu nsair - Bno.25 </p>
-                                </div>
-                                <hr />
-                                <div className='flex'>
-                                    <div className='flex w-8/12'>
-                                        <p className=' my-auto ml-3 font-bold'>Nationality: </p>
-                                    </div>
-                                    <p className='w-1/3 font-bold my-auto'>Syrian </p>
-                                </div>
-
-
-
-
+                        <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+                            <div className="px-4 py-5 sm:px-6">
+                                <h3 className="text-lg leading-6 font-medium text-gray-900">Basic Information</h3>
+                                <p className="mt-1 max-w-2xl text-sm text-gray-500">Personal details .</p>
                             </div>
+                            <div className="border-t border-gray-200">
+                                <dl>
+                                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">Full Name: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Malak khasawneh</dd>
+                                    </div>
+                                    <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">Social Status: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">singel</dd>
+                                    </div>
+                                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">Position: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Software Engineer</dd>
+                                    </div>
+                                    <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">Birthday: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">27/4/1996</dd>
+                                    </div>
+                                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">National ID / passport No: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">9962008554</dd>
+                                    </div>
+                                    <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">Address: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Irbid</dd>
+                                    </div>
+                                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">Nationality: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Irbid</dd>
+                                    </div>
 
+
+                                    {/* <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">Nationality: </dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
+              qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud
+              pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+            </dd>
+          </div> */}
+                                </dl>
+                            </div>
                         </div>
+
                     </div>
                     {/* Contacts */}
                     <div className='py-3 bg-gray-100 mt-4 w-5/12 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                        <div className='w-11/12 mx-auto '>
-                            <h3 className='text-left'>Contacts:</h3>
-                        </div>
-                        <hr />
-                       
-                        <div className='overflow-y-auto h-[300px]'>
-                            <div className='w-11/12 mx-auto my-3 text-left'>
-                                <div className='flex'>
-                                    <div className='flex w-8/12'>
-                                        <p className=' my-auto ml-3 font-bold'>Mobile No:</p>
+                        <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+                            <div className="px-4 py-5 sm:px-6">
+                                <h3 className="text-lg leading-6 font-medium text-gray-900">Contacts Information</h3>
+                                <p className="mt-1 max-w-2xl text-sm text-gray-500">Contacts Information details .</p>
+                            </div>
+                            <div className="border-t border-gray-200">
+                                <dl>
+                                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">Mobile No: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">07855555255</dd>
                                     </div>
-                                    <p className='w-1/3 font-bold my-auto'>07855555255</p>
-                                </div>
-                                <hr />
-                                <div className='flex'>
-                                    <div className='flex w-8/12'>
-                                        <p className=' my-auto ml-3 font-bold'>Email Address:</p>
+                                    <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">Email Address: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">A_ghafour@flawless.com</dd>
                                     </div>
-                                    <p className='w-1/3 font-bold my-auto'>A_ghafour@flawless.com</p>
-                                </div>
-                            </div>
-                            <hr />
-                            <div className='flex'>
-                                <div className='flex w-8/12'>
-                                    <p className=' my-auto ml-3 font-bold'>Emergency phone:</p>
-                                </div>
-                                <p className='w-1/3 font-bold my-auto'>079586425855</p>
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-                            {/* Dates */}
-                            <div div className='flex w-auto ml-20 px-15'>
-                            <div className='py-3 bg-gray-100 mt-4 w-5/12 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                                <div className='w-11/12 mx-auto '>
-                                    <h3 className='text-left'>Dates:</h3>
-                                </div>
-                                <hr />
-                                <div className='overflow-y-auto h-[300px]'>
-                                    <div className='w-11/12 mx-auto my-3 text-left'>
-                                        <div className='flex'>
-                                            <div className='flex w-8/12'>
-                                                <p className=' my-auto ml-3 font-bold'>Date 1:</p>
-                                            </div>
-                                            <p className='w-1/3 font-bold my-auto'>#####</p>
-                                        </div>
-                                        <hr />
-                                        <div className='flex'>
-                                            <div className='flex w-8/12'>
-                                                <p className=' my-auto ml-3 font-bold'>Date 2:</p>
-                                            </div>
-                                            <p className='w-1/3 font-bold my-auto'>#######</p>
-                                        </div>
-                                    <hr />
-                                    <div className='flex'>
-                                        <div className='flex w-8/12'>
-                                            <p className=' my-auto ml-3 font-bold'> Date 3:</p>
-                                        </div>
-                                        <p className='w-1/3 font-bold my-auto'>######</p>
+                                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt className="text-sm font-medium text-gray-500">Emergency phone: </dt>
+                                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">079586425855</dd>
                                     </div>
-
-                                  </div>
-
-
-
-                                </div>
-
-
+                                </dl>
                             </div>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/* Dates */}
+                <div div className='flex w-auto ml-20 px-15'>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div className="px-4 py-5 sm:px-6">
+                <h3 className="text-lg leading-6 font-medium text-gray-900">Dates Information</h3>
+                <p className="mt-1 max-w-2xl text-sm text-gray-500">Dates Information details .</p>
+            </div>
+            <div className="border-t border-gray-200">
+                <dl>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className="text-sm font-medium text-gray-500">Joined Date: </dt>
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">07/10/2021</dd>
+                    </div>
+                    <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     
+                    <div className="flex items-start">
+                        <div className="flex items-center h-5">
+                            <input
+                                id="active"
+                                name="active"
+                                type="checkbox"
+                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                            />
+                        </div>
+                        <div className="ml-3 text-sm">
+                            <label htmlFor="active" className="font-medium text-gray-700">
+                                Active Status
+                            </label>
+                            <p className="text-gray-500">Still employee joined with us</p>
+                        </div>
+                    </div>
                     </div>
 
 
+                </dl>
+            </div>
+        </div>
                 </div>
-                )
+            </div>
+
+
+        </div>
+    )
 }
 
-                export default DashBoard
+export default DashBoard
+
+
+
+
