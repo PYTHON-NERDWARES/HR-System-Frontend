@@ -2,6 +2,7 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { useSelector, useDispatch } from 'react-redux';
+let colors = require("./colorPallet.json")
 
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -18,10 +19,12 @@ const ChartApp = () => {
             departments: state.stateReducer.departments,
         }
     });
+    let colorPallet = []
     const labels = state.departments.map(element => {
+        colorPallet.push('#'+ Math.floor(Math.random() * 19777215).toString(16))
         return (element.name)
     })
-
+console.log(colorPallet);
     const groupBy = (arr, criteria) => {
         const newObj = arr.reduce(function (acc, currentValue) {
             if (!acc[currentValue[criteria]]) {
@@ -41,16 +44,9 @@ const ChartApp = () => {
         labels: labels,
         datasets: [
             {
-                label: '# of Votes',
+                label: "#",
                 data: depArr,
-                backgroundColor: [
-                    "#F7464A",
-                    "#46BFBD",
-                    "#FDB45C",
-                    "#949FB1",
-                    "#4D5360",
-                    "#AC64AD"
-                ],
+                backgroundColor: colors.color,
                 // borderColor: [
                 //     'rgba(255, 99, 132, 1)',
                 //     'rgba(54, 162, 235, 1)',

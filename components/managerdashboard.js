@@ -13,8 +13,6 @@ import Branches from './Branch';
 import Profile from './EmployeesDetails';
 
 
-
-
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
 const hrURL = baseUrl + 'hr/'
 const brURL = hrURL + 'branch'
@@ -22,8 +20,7 @@ const imURL = process.env.NEXT_PUBLIC_IMAGE_LINK
 const dpURL = hrURL + 'department'
 
 
-
-const DashBoard = () => {
+const ManagerDashboard = () => {
     const dispatch = useDispatch();
 
 
@@ -81,7 +78,7 @@ const DashBoard = () => {
                     } */}
                             <button autoFocus onClick={() => RightSide("Dashboard")} className='w-1/2 py-2 text-center bg-gray-100 border-2 focus:bg-yellow-400 hover:bg-yellow-400 rounded-tl-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faHome} style={{ width: "30px", height: '30px' }} />Dashboard</button>
                             <button onClick={() => RightSide("Employees")} className='w-1/2 py-2 text-center border-2 focus:bg-yellow-400 hover:bg-yellow-400 rounded-tr-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faUsers} style={{ width: "30px", height: '30px' }} />Employees</button>
-                            <button onClick={() => RightSide("Branchs")} className='w-1/2 py-2 text-center border-2 focus:bg-yellow-400 hover:bg-yellow-400'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faBuilding} style={{ width: "30px", height: '30px' }} />Branches</button>
+                            <button onClick={() => RightSide("Branchs")} className='w-1/2 py-2 text-center border-2 focus:bg-yellow-400 hover:bg-yellow-400'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faBuilding} style={{ width: "30px", height: '30px' }} />Branch Info</button>
                             <button onClick={() => RightSide("Calendar")} className='w-1/2 py-2 text-center border-2 focus:bg-yellow-400 hover:bg-yellow-400'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faCalendarAlt} style={{ width: "30px", height: '30px' }} />Calendar</button>
                             <button onClick={() => RightSide("Profile")} className='w-full py-2 text-center border-2 focus:bg-yellow-400 hover:bg-yellow-400 rounded-b-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faUser} style={{ width: "30px", height: '30px' }} />Profile</button>
                         </div>
@@ -160,6 +157,7 @@ const DashBoard = () => {
                                             state.data.payload &&
                                             state.data.payload.map(element => {
                                                 return (
+                                                    console.log("Element",element) &&
                                                     element.role == 'Branch Manager' &&
                                                     <div>
                                                         <div className='w-11/12 mx-auto my-3 text-left'>
@@ -222,4 +220,4 @@ const DashBoard = () => {
     )
 }
 
-export default DashBoard
+export default ManagerDashboard

@@ -122,10 +122,11 @@ const EmployeesTable = () => {
   ]
   const columns = [
     {
-      title: "#",
+      title: "Employee ID",
       field: "employee_id",
       align: 'center',
       cellStyle: { whiteSpace: 'nowrap' },
+      
     },
     {
       title: "Personal Picture",
@@ -211,7 +212,10 @@ const EmployeesTable = () => {
     <div className='w-3/4'>
       <div className='w-11/12 mx-auto mt-4'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <MaterialTable className="" title="Employee Details" data={data} columns={columns} actions={actions} options={{ search: true, paging: true, filtering: true, exportButton: true, doubleHorizontalScroll: true, defaultExpanded: 'true', loadingType: 'linear', actionsColumnIndex: -1 }} />
+        <MaterialTable className="" title="Employee Details" data={data} columns={columns} actions={actions} options={{headerStyle: {
+          backgroundColor: '#624FB6',
+          color: '#FFF'
+        }, search: true, paging: true, filtering: true, exportButton: true, doubleHorizontalScroll: true, defaultExpanded: 'true', loadingType: 'linear', actionsColumnIndex: -1 }} />
       </div>
 
 

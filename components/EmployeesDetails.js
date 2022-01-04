@@ -7,34 +7,8 @@ import p from '../assets/p.jpg'
 import EmployeeInfoTable from './EmployeInfoTable';
 
 
-const DashBoard = () => {
+const Profile = () => {
     return (
-        <div className='flex mb-10'>
-            {/* Left Side */}
-            <div className='z-50 w-1/4 sticky top-0 h-[600px]'>
-                {/* Home */}
-                <div className='py-3 bg-gray-100 -mt-4 ml-10 px-10 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                    <p className='m-0'>Home / Dashboard</p>
-                    <h4 className='m-0'> HR Dashboard</h4>
-                </div>
-
-                {/* Admin profile */}
-                <div className='py-3 bg-gray-100 mt-4 ml-10 px-10 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                    <Image src={headerLogo} alt="" className="bg-cover bg-center" width={100} height={120} />
-                    <p className='font-bold'>Welcome Admin</p>
-                </div>
-
-                {/* buttons */}
-                <div className='flex flex-wrap py-3 bg-gray-100 mt-4 ml-10 px-10 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                    <button className='py-2 border-2 w-1/2 hover:bg-yellow-400 text-center rounded-tl-md'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faHome} style={{ width: "30px", height: '30px' }} />Dashboard</button>
-                    <button className='py-2 border-2 w-1/2 hover:bg-yellow-400 text-center rounded-tr-md'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faUsers} style={{ width: "30px", height: '30px' }} />Employees</button>
-                    <button className='py-2 border-2 w-1/2 hover:bg-yellow-400 text-center'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faBuilding} style={{ width: "30px", height: '30px' }} />Companies</button>
-                    <button className='py-2 border-2 w-1/2 hover:bg-yellow-400 text-center'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faCalendarAlt} style={{ width: "30px", height: '30px' }} />Calendar</button>
-                    <button className='py-2 border-2 w-full hover:bg-yellow-400 text-center rounded-b-md'><FontAwesomeIcon className='text-gray-800 mx-auto' icon={faUser} style={{ width: "30px", height: '30px' }} />Profile</button>
-                </div>
-            </div>
-
-            {/* Right Side */}
             <div className='w-3/4'>
                 {/* First Row */}
 
@@ -182,8 +156,7 @@ const DashBoard = () => {
                     </div>
 
 
-                </div>
                 )
 }
 
-                export default DashBoard
+                export default Profile

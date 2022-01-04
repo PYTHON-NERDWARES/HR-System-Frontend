@@ -7,6 +7,7 @@ import { useSelector , useDispatch } from 'react-redux';
 import EmployeeDashBoard from './EmployeeDashboard'
 import EmployeesDetails from './EmployeesDetails'
 import EmployeesPage from './EmployeesPage'
+import ManagerDashboard from './managerdashboard';
 
 
 
@@ -27,12 +28,14 @@ const Main = () => {
         <>
         <Header />
         {
-            decodedPayload.role == 'HR' ? <DashBoard /> : <EmployeeDashBoard/>
+            decodedPayload.role == 'HR' && <DashBoard />  
         }
-        {/* <EmployeesPage/> */}
-        {/* <EmployeeDashBoard/> */}
-        
-        {/* <EmployeesDetails/> */}
+        {
+            decodedPayload.role == 'Branch Manager' && <ManagerDashboard />  
+        }
+        {
+            decodedPayload.role != 'Branch Manager' && decodedPayload.role != 'HR' && <EmployeeDashBoard/> 
+        }
         <Footer />
         </>
     )

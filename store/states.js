@@ -6,7 +6,7 @@ import jsonwebtoken from 'jsonwebtoken';
 
 const initState = {
     credintials: { username: '', password: '' },
-    token: "" ,
+    token: "",
     data: [],
     branches: [],
     departments: [],
@@ -14,10 +14,10 @@ const initState = {
     totalsalary: 0,
     salary: 0,
     rightside: 'Dashboard',
-    open:false,
-    addorupdate:'',
-    requestModal:false,
-    emInfo:{},
+    open: false,
+    addorupdate: '',
+    requestModal: false,
+    emInfo: {},
 }
 
 const TotalSalary = (data) => {
@@ -44,7 +44,7 @@ export const createUser = function (api, obj) {
     };
 };
 
-export const deleteRequest = function (api,config) {
+export const deleteRequest = function (api, config) {
     return (dispatch) => {
         return axios.delete(api, config)
     };
@@ -54,7 +54,8 @@ export const deleteRequest = function (api,config) {
 export const getRequest = function (api1, api2, api3, config) {
     return (dispatch) => {
         let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
-        if(decodedPayload.role == "HR"){
+        console.log("Decoded Toke", decodedPayload);
+        if (decodedPayload.role == "HR") {
             return (
                 axios.get(api1, config).then((response) => {
                     dispatch(getEmpNo({ payload: response.data }));
@@ -68,8 +69,31 @@ export const getRequest = function (api1, api2, api3, config) {
                     dispatch(getDepNo({ departments: response.data }))
                 })
             )
+        } else if (decodedPayload.role == "Branch Manager") {
+            return (
+                axios.get(api1, config).then((response) => {
+                    let data = response.data.map(element => {
+                        console.log(element);
+
+                        if (element.branch == "Amman") {
+                            return element
+                        }
+                    })
+                    dispatch(getEmpNo({ payload: data }));
+                    let total = TotalSalary(data)
+                    dispatch(setTotalSalary({ payload: total }));
+
+
+                }),
+                axios.get(api2, config).then((response) => {
+                    dispatch(getBrNo({ branches: response.data }))
+                }),
+                axios.get(api3, config).then((response) => {
+                    dispatch(getDepNo({ departments: response.data }))
+                })
+            )
         }
-        else{
+        else {
             return (
                 axios.get(api1, config).then((response) => {
                     dispatch(getEmpNo({ payload: response.data }));
@@ -180,10 +204,10 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:state.open,
+                open: state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
         case 'GETTOKEN':
@@ -198,10 +222,10 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:state.open,
+                open: state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
         case 'GETEMPNO':
@@ -216,10 +240,10 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:state.open,
+                open: state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
         case 'GETBRNO':
@@ -234,10 +258,10 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:state.open,
+                open: state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
         case 'SETTOTALSALARY':
@@ -252,10 +276,10 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: payload,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:state.open,
+                open: state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
         case 'GETDEPNO':
@@ -269,10 +293,10 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:state.open,
+                open: state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
         case 'RIGHTSIDE':
@@ -286,13 +310,13 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: payload,
-                open:state.open,
+                open: state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
-            case 'OPENMODEL':
+        case 'OPENMODEL':
             return {
                 credintials: { username: state.username, password: state.password },
                 token: state.token,
@@ -303,13 +327,13 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:payload,
+                open: payload,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
-            case 'ADDORUPDATE':
+        case 'ADDORUPDATE':
             return {
                 credintials: { username: state.username, password: state.password },
                 token: state.token,
@@ -320,13 +344,13 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:state.open,
+                open: state.open,
                 addorupdate: payload,
                 requestModal: state.requestModal,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
-            case 'REQUESTMODEL':
+        case 'REQUESTMODEL':
             return {
                 credintials: { username: state.username, password: state.password },
                 token: state.token,
@@ -337,13 +361,13 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:state.open,
+                open: state.open,
                 addorupdate: state.addorupdate,
                 requestModal: payload,
-                emInfo:state.emInfo,
+                emInfo: state.emInfo,
             }
 
-            case 'EMINFO':
+        case 'EMINFO':
             return {
                 credintials: { username: state.username, password: state.password },
                 token: state.token,
@@ -354,10 +378,10 @@ const stateReducer = (state = initState, action) => {
                 totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
-                open:state.open,
+                open: state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
-                emInfo:payload,
+                emInfo: payload,
             }
 
         default:
