@@ -18,6 +18,7 @@ const initState = {
     addorupdate: '',
     requestModal: false,
     emInfo: {},
+    id:0,
 }
 
 const TotalSalary = (data) => {
@@ -58,6 +59,7 @@ export const getRequest = function (api1, api2, api3, config) {
         if (decodedPayload.role == "HR") {
             return (
                 axios.get(api1, config).then((response) => {
+                    dispatch(getId({ payload: response.data.at(-1).id }))
                     dispatch(getEmpNo({ payload: response.data }));
                     let total = TotalSalary(response.data)
                     dispatch(setTotalSalary({ payload: total }));
@@ -72,11 +74,13 @@ export const getRequest = function (api1, api2, api3, config) {
         } else if (decodedPayload.role == "Branch Manager") {
             return (
                 axios.get(api1, config).then((response) => {
-                    let data = response.data.map(element => {
+                    dispatch(getId({ payload: response.data.at(-1).id }))
+                    let data = []
+                    response.data.map(element => {
                         console.log(element);
 
-                        if (element.branch == "Amman") {
-                            return element
+                        if (element.branch == "Amman" && element.role != "HR" && element.role != "Branch Manager") {
+                            data.push(element)
                         }
                     })
                     dispatch(getEmpNo({ payload: data }));
@@ -85,17 +89,35 @@ export const getRequest = function (api1, api2, api3, config) {
 
 
                 }),
+
                 axios.get(api2, config).then((response) => {
-                    dispatch(getBrNo({ branches: response.data }))
+                    let data = []
+                    response.data.map(element => {
+                        console.log(element);
+
+                        if (element.name == "Amman") {
+                            data.push(element)
+                        }
+                    })
+                    dispatch(getBrNo({ branches: data }))
                 }),
                 axios.get(api3, config).then((response) => {
-                    dispatch(getDepNo({ departments: response.data }))
+                    let data = []
+                    response.data.map(element => {
+                        console.log(element);
+
+                        if (element.branch == "Amman") {
+                            data.push(element)
+                        }
+                    })
+                    dispatch(getDepNo({ departments: data }))
                 })
             )
         }
         else {
             return (
                 axios.get(api1, config).then((response) => {
+                    dispatch(getId({ payload: response.data.at(-1).id }))
                     dispatch(getEmpNo({ payload: response.data }));
                     dispatch(setTotalSalary({ payload: response.data.salary }));
                 }),
@@ -109,6 +131,13 @@ export const getRequest = function (api1, api2, api3, config) {
         }
     };
 };
+
+export const getId = (num) => {
+    return {
+        type: 'GETID',
+        payload: num
+    }
+}
 
 export const emInfo = (obj) => {
     return {
@@ -208,6 +237,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'GETTOKEN':
@@ -226,6 +256,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'GETEMPNO':
@@ -244,6 +275,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'GETBRNO':
@@ -262,6 +294,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'SETTOTALSALARY':
@@ -280,6 +313,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'GETDEPNO':
@@ -297,6 +331,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'RIGHTSIDE':
@@ -314,6 +349,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'OPENMODEL':
@@ -331,6 +367,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'ADDORUPDATE':
@@ -348,6 +385,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: payload,
                 requestModal: state.requestModal,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'REQUESTMODEL':
@@ -365,6 +403,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: payload,
                 emInfo: state.emInfo,
+                id:state.id,
             }
 
         case 'EMINFO':
@@ -382,6 +421,25 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo: payload,
+                id:state.id,
+            }
+
+            case 'GETID':
+            return {
+                credintials: { username: state.username, password: state.password },
+                token: state.token,
+                data: state.data,
+                branches: state.branches,
+                departments: state.departments,
+                employees: state.employees,
+                totalsalary: state.totalsalary,
+                salary: state.salary,
+                rightside: state.rightside,
+                open: state.open,
+                addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
+                emInfo: state.emInfo,
+                id:payload,
             }
 
         default:

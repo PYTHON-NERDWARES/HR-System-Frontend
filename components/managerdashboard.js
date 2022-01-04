@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faUsers, faBuilding, faCalendarAlt, faUser, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUsers, faCodeBranch, faBuilding, faCalendarAlt, faUser, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons'
 import ChartApp from './pieChart';
 import AdminEventTable from './admineventtable';
 import { useSelector, useDispatch } from 'react-redux';
@@ -106,13 +106,13 @@ const ManagerDashboard = () => {
                                 {/* companies */}
                                 <div className='flex py-3 bg-rose-600 mt-3  w-1/4 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
                                     <div className='w-1/4'>
-                                        <FontAwesomeIcon className='w-1/4 mx-auto mt-1 text-gray-800' icon={faBuilding} style={{ width: "45px", height: '45px' }} />
+                                        <FontAwesomeIcon className='w-1/4 mx-auto mt-1 text-gray-800' icon={faCodeBranch} style={{ width: "45px", height: '45px' }} />
                                     </div>
                                     <div className='w-3/4'>
-                                        <p className='m-0 text-xl font-bold'>Branches</p>
+                                        <p className='m-0 text-xl font-bold'>Departments</p>
                                         {
                                             state.branches.branches &&
-                                            <p className='m-0 font-bold'>{state.branches.branches.length}</p>
+                                            <p className='m-0 font-bold'>{state.departments.length}</p>
                                         }
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@ const ManagerDashboard = () => {
                                 {/* Branches and Managers */}
                                 <div className='py-3 bg-gray-100 mt-4 w-5/12 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
                                     <div className='w-11/12 mx-auto '>
-                                        <h3 className='text-left'>Managers & Branches</h3>
+                                        <h3 className='text-left'>Department & Managers</h3>
                                     </div>
                                     <hr />
                                     {/* manager profile */}
@@ -157,9 +157,12 @@ const ManagerDashboard = () => {
                                             state.data.payload &&
                                             state.data.payload.map(element => {
                                                 return (
-                                                    console.log("Element",element) &&
-                                                    element.role == 'Branch Manager' &&
+                                                    
+                                                    element.role == 'Department Manager' && 
                                                     <div>
+                                                        {
+                                                            console.log("hiiiiiiiii")
+                                                        }
                                                         <div className='w-11/12 mx-auto my-3 text-left'>
                                                             <div className='flex'>
                                                                 <div className='flex w-8/12'>
@@ -167,11 +170,11 @@ const ManagerDashboard = () => {
                                                                         element.Personal_Picture ?
                                                                             <img src={element.Personal_Picture} alt="" className="bg-center bg-cover rounded-full" style={{ width: '50px', height: '50px' }} />
                                                                             :
-                                                                            <img src="" alt="" />
+                                                                            <img className="bg-center bg-cover rounded-full" style={{ width: '50px', height: '50px' }} src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1214428300?k=20&m=1214428300&s=170667a&w=0&h=NPyJe8rXdOnLZDSSCdLvLWOtIeC9HjbWFIx8wg5nIks=" alt="" />
                                                                     }
                                                                     <p className='my-auto ml-3 font-bold '>{element.first_name + element.last_name}</p>
                                                                 </div>
-                                                                <p className='w-1/3 my-auto font-bold'>{element.branch} Branch</p>
+                                                                <p className='w-1/3 my-auto font-bold'>{element.department} Department</p>
                                                             </div>
                                                         </div>
                                                         <hr />

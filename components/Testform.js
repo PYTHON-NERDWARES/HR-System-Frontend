@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import swal from 'sweetalert';
 import { useEffect } from 'react';
+import jsonwebtoken from 'jsonwebtoken';
 
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
@@ -25,13 +26,14 @@ const Testform = () => {
             branches: state.stateReducer.branches,
             data: state.stateReducer.data,
             emInfo: state.stateReducer.emInfo,
+            id: state.stateReducer.id
         }
     });
     useEffect(() => {
         setSelectedFile(state.emInfo.Personal_Picture || selectedFile)
     }, [selectedFile])
 
-
+    // console.log(211111111111111111111111,state.id);
 
     const config = {
         headers: { "Authorization": `Bearer ${state.token.token.access}` }
@@ -41,7 +43,7 @@ const Testform = () => {
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
-    let emID = `${year}${month < 10 ? `0${month}` : `${month}`}${date < 10 ? `0${date}` : `${date}`}${state.data.payload.at(-1).id + 1}`
+    let emID = `${year}${month < 10 ? `0${month}` : `${month}`}${date < 10 ? `0${date}` : `${date}`}${state.id.payload + 1}`
 
     const submitHandler = (e) => {
 
@@ -107,7 +109,7 @@ const Testform = () => {
         }
         else {
             axios.put(baseUrl + `hr/${state.emInfo.id}/update-delete/`, info, config).then(() => {
-                console.log(23132123,`${state.emInfo.id}/update-delete/`);
+                console.log(23132123, `${state.emInfo.id}/update-delete/`);
                 swal("Good job!", "The data has been updated!", "success").then(() => {
                     dispatch(emInfo({}))
                     dispatch(getRequest(hrURL, brURL, dpURL, config))
@@ -118,14 +120,28 @@ const Testform = () => {
 
     }
 
-    let roles = ['---', 'HR', 'Branch Manager', 'Department Manager', 'Software Engineer',
-        'Senior Software Engineer', 'Full Stack Developer', 'FrontEnd Developer',
-        'BackEnd Developer', 'Python Developer', 'UX Designer', 'UI Designer',
-        'DOTnet Developer', 'Java Developer', 'Android Developer',
-        'Mobile Developer', 'Project Development Manager',
-        'Chief Operating Officer', 'Digital Marketing', 'Marketing Officer',
-        'Marketing Officer', 'Databace Administrator', 'Quality Assurance',
-        'Junior Frontend Developer', 'Trainee']
+    let decodedPayload = jsonwebtoken.decode(state.token.token.access)
+    let roles = []
+    if (decodedPayload.role == "HR") {
+        roles = ['---', 'HR', 'Branch Manager', 'Department Manager', 'Software Engineer',
+            'Senior Software Engineer', 'Full Stack Developer', 'FrontEnd Developer',
+            'BackEnd Developer', 'Python Developer', 'UX Designer', 'UI Designer',
+            'DOTnet Developer', 'Java Developer', 'Android Developer',
+            'Mobile Developer', 'Project Development Manager',
+            'Chief Operating Officer', 'Digital Marketing', 'Marketing Officer',
+            'Marketing Officer', 'Databace Administrator', 'Quality Assurance',
+            'Junior Frontend Developer', 'Trainee']
+    } else {
+        roles = ['---', 'Department Manager', 'Software Engineer',
+            'Senior Software Engineer', 'Full Stack Developer', 'FrontEnd Developer',
+            'BackEnd Developer', 'Python Developer', 'UX Designer', 'UI Designer',
+            'DOTnet Developer', 'Java Developer', 'Android Developer',
+            'Mobile Developer', 'Project Development Manager',
+            'Chief Operating Officer', 'Digital Marketing', 'Marketing Officer',
+            'Marketing Officer', 'Databace Administrator', 'Quality Assurance',
+            'Junior Frontend Developer', 'Trainee']
+    }
+
     let Nationalities = ['---', 'Afghan', 'Albanian', 'Algerian', 'Argentinian', 'Australian', 'Bangladeshi', 'Belgian', 'Bolivian', 'Batswana', 'Brazilian', 'Bulgarian', 'Cambodian', 'Cameroonian', 'Canadian', 'Chilean', 'Chinese', 'Colombian', 'Costa Rican', 'Croatian', 'Cuban', 'Czech', 'Danish', 'Dominican', 'Ecuadorian', 'Egyptian', 'Salvadorian', 'English', 'Estonian', 'Ethiopian', 'Fijian', 'Finnish', 'French', 'German', 'Ghanaian', 'Greek', 'Guatemalan', 'Haitian', 'Honduran', 'Hungarian', 'Icelandic', 'Indian', 'Indonesian', 'Iranian', 'Iraqi', 'Irish', 'Italian', 'Jamaican',
         'Japanese', 'Jordanian', 'Kenyan', 'Kuwaiti', 'Lao', 'Latvian', 'Lebanese', 'Libyan', 'Lithuanian', 'Malagasy', 'Malaysian', 'Malian',
         'Maltese', 'Mexican', 'Mongolian', 'Moroccan', 'Mozambican', 'Namibian', 'Nepalese', 'Dutch', 'New Zealand', 'Nicaraguan',
@@ -287,7 +303,7 @@ const Testform = () => {
                                                     <label className="block text-sm font-medium text-gray-700"> Password </label>
                                                     {/* {!state.emInfo.username && */}
 
-                                                        <input required defaultValue={state.emInfo.password || ""} name='password' className="border-1 border-violet-600 mt-1 block w-full shadow-sm sm:text-ms py-1 pl-5 rounded-md" type="password" />
+                                                    <input required defaultValue={state.emInfo.password || ""} name='password' className="border-1 border-violet-600 mt-1 block w-full shadow-sm sm:text-ms py-1 pl-5 rounded-md" type="password" />
                                                     {/* // } */}
                                                     {/* {state.emInfo.username &&
                                                         <>

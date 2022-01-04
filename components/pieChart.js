@@ -36,6 +36,7 @@ console.log(colorPallet);
         return newObj;
     }
     let depArr= []
+    console.log("Chart",state.data.payload);
     const dataSet = groupBy(state.data.payload, "department")
     for (const key in dataSet) {
         depArr.push(dataSet[key].length)
