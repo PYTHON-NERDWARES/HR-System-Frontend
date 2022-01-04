@@ -1,13 +1,7 @@
 import React from 'react'
-import Table from 'react-bootstrap/Table'
-import { MDBDataTable } from 'mdbreact';
 import MaterialTable from "material-table";
-import Image from 'next/image'
-import logo from '../assets/p.jpg'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteRequest, getRequest, openModel, addOrUpdate, emInfo } from '../store/states'
-import CreateModel from './createmodel';
-import { useState } from 'react'
 
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
@@ -35,7 +29,23 @@ const EmployeesTable = () => {
 
   const emData = state.data.payload.map(element => {
     return ({
-      employee_id: `${element.employee_id}`, Personal_Picture: `${element.Personal_Picture}`, name: `${element.first_name} ${element.last_name}`, role: `${element.role}`, work_type: `${element.work_type}`, experience: `${element.experience}`, salary: `${element.salary} $`, gender: `${element.gender}`, nationality: `${element.nationality}`, marital_status: `${element.marital_status}`, days_taken: `${element.days_taken}`, days_remaining: `${element.days_remaining}`, department: `${element.department}`, branch: `${element.branch}`, phone: `${element.phone}`, email: `${element.email}`, id: `${element.id}`
+      employee_id: `${element.employee_id}`, 
+      Personal_Picture: `${element.Personal_Picture}`, 
+      name: `${element.first_name} ${element.last_name}`, 
+      role: `${element.role}`, 
+      work_type: `${element.work_type}`, 
+      experience: `${element.experience}`, 
+      salary: `${element.salary} $`, 
+      gender: `${element.gender}`, 
+      nationality: `${element.nationality}`, 
+      marital_status: `${element.marital_status}`, 
+      days_taken: `${element.days_taken}`, 
+      days_remaining: `${element.days_remaining}`, 
+      department: `${element.department}`, 
+      branch: `${element.branch}`, 
+      phone: `${element.phone}`, 
+      email: `${element.email}`, 
+      id: `${element.id}`
     })
   })
 

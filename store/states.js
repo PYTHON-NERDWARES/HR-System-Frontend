@@ -2,8 +2,6 @@ import axios from "axios"
 import cookie from 'react-cookies'
 import jsonwebtoken from 'jsonwebtoken';
 
-
-
 const initState = {
     credintials: { username: '', password: '' },
     token: "" ,
@@ -18,6 +16,7 @@ const initState = {
     addorupdate:'',
     requestModal:false,
     emInfo:{},
+    open_branch_form:false,
 }
 
 const TotalSalary = (data) => {
@@ -98,6 +97,13 @@ export const open_request_Model = (request_Model) => {
     return {
         type: 'REQUESTMODEL',
         payload: request_Model
+    }
+}
+
+export const open_branch_Modal = (open_branch_form) => {
+    return {
+        type: 'REQUESTBRANCHMODEL',
+        payload: open_branch_form
     }
 }
 
@@ -184,6 +190,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
         case 'GETTOKEN':
@@ -202,6 +209,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
         case 'GETEMPNO':
@@ -220,6 +228,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
         case 'GETBRNO':
@@ -238,6 +247,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
         case 'SETTOTALSALARY':
@@ -247,15 +257,16 @@ const stateReducer = (state = initState, action) => {
                 token: state.token,
                 data: state.data,
                 branches: state.branches,
+                totalsalary: payload,
                 departments: state.departments,
                 employees: state.employees,
-                totalsalary: payload,
                 salary: state.salary,
                 rightside: state.rightside,
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
         case 'GETDEPNO':
@@ -264,15 +275,16 @@ const stateReducer = (state = initState, action) => {
                 token: state.token,
                 data: state.data,
                 branches: state.branches,
+                totalsalary: state.totalsalary,
                 departments: payload.departments,
                 employees: state.employees,
-                totalsalary: state.totalsalary,
                 salary: state.salary,
                 rightside: state.rightside,
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
         case 'RIGHTSIDE':
@@ -281,15 +293,16 @@ const stateReducer = (state = initState, action) => {
                 token: state.token,
                 data: state.data,
                 branches: state.branches,
-                departments: state.departments,
-                employees: state.employees,
                 totalsalary: state.totalsalary,
-                salary: state.salary,
+                departments: state.departments,
                 rightside: payload,
+                employees: state.employees,
+                salary: state.salary,
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
             case 'OPENMODEL':
@@ -307,6 +320,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
             case 'ADDORUPDATE':
@@ -324,6 +338,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: payload,
                 requestModal: state.requestModal,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
             case 'REQUESTMODEL':
@@ -341,6 +356,7 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: payload,
                 emInfo:state.emInfo,
+                open_branch_form:state.open_branch_form,
             }
 
             case 'EMINFO':
@@ -358,7 +374,27 @@ const stateReducer = (state = initState, action) => {
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
                 emInfo:payload,
+                open_branch_form:state.open_branch_form,
             }
+
+            case 'REQUESTBRANCHMODEL':
+            return {
+                credintials: { username: state.username, password: state.password },
+                token: state.token,
+                data: state.data,
+                branches: state.branches,
+                departments: state.departments,
+                employees: state.employees,
+                totalsalary: state.totalsalary,
+                salary: state.salary,
+                rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
+                emInfo:state.emInfo,
+                open_branch_form:payload,
+            }
+
 
         default:
             return state;

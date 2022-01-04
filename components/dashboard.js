@@ -9,7 +9,7 @@ import { getRequest, rightSide } from '../store/states'
 import jsonwebtoken from 'jsonwebtoken';
 import EmployeesTable from './EmployeInfoTable'
 import CreateModel from './createmodel';
-
+import BranchInfoTable from './BranchInfoTable';
 
 
 
@@ -49,7 +49,7 @@ const DashBoard = () => {
     const RightSide = (load) => {
         dispatch(rightSide(load))
     }
-   
+
 
 
     return (
@@ -200,6 +200,11 @@ const DashBoard = () => {
                         <EmployeesTable />
                     }
 
+
+                    {
+                        state.rightside == "Branchs" &&
+                        <BranchInfoTable />
+                    }
 
 
 
