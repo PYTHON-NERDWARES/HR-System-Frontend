@@ -21,6 +21,8 @@ const EmployeesTable = () => {
 
   // const [openM, setOpenM] = useState(false)
 
+
+
   const state = useSelector((state) => {
     return {
       data: state.stateReducer.data,
@@ -40,7 +42,7 @@ const EmployeesTable = () => {
   })
 
   const data = emData;
-  console.log(1225546, data);
+  // console.log(1225546, data);
   const actions = [
     {
       icon: 'edit',
