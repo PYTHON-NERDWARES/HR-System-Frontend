@@ -16,6 +16,7 @@ const initState = {
     rightside: 'Dashboard',
     open:false,
     addorupdate:'',
+    requestModal:false,
 }
 
 const TotalSalary = (data) => {
@@ -34,6 +35,12 @@ export const postRequest = function (api, obj) {
             dispatch(getToken({ token: response.data }));
             cookie.save('token', response.data)
         });
+    };
+};
+
+export const createUser = function (api, obj) {
+    return (dispatch) => {
+        return axios.post(api, obj)
     };
 };
 
@@ -80,6 +87,12 @@ export const getRequest = function (api1, api2, api3, config) {
 };
 
 
+export const open_request_Model = (request_Model) => {
+    return {
+        type: 'REQUESTMODEL',
+        payload: request_Model
+    }
+}
 
 export const addOrUpdate = (str) => {
     return {
@@ -162,6 +175,7 @@ const stateReducer = (state = initState, action) => {
                 rightside: state.rightside,
                 open:state.open,
                 addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
             }
 
         case 'GETTOKEN':
@@ -178,6 +192,7 @@ const stateReducer = (state = initState, action) => {
                 rightside: state.rightside,
                 open:state.open,
                 addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
             }
 
         case 'GETEMPNO':
@@ -194,6 +209,7 @@ const stateReducer = (state = initState, action) => {
                 rightside: state.rightside,
                 open:state.open,
                 addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
             }
 
         case 'GETBRNO':
@@ -210,6 +226,7 @@ const stateReducer = (state = initState, action) => {
                 rightside: state.rightside,
                 open:state.open,
                 addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
             }
 
         case 'SETTOTALSALARY':
@@ -226,6 +243,7 @@ const stateReducer = (state = initState, action) => {
                 rightside: state.rightside,
                 open:state.open,
                 addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
             }
 
         case 'GETDEPNO':
@@ -241,6 +259,7 @@ const stateReducer = (state = initState, action) => {
                 rightside: state.rightside,
                 open:state.open,
                 addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
             }
 
         case 'RIGHTSIDE':
@@ -256,6 +275,7 @@ const stateReducer = (state = initState, action) => {
                 rightside: payload,
                 open:state.open,
                 addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
             }
 
             case 'OPENMODEL':
@@ -271,6 +291,7 @@ const stateReducer = (state = initState, action) => {
                 rightside: state.rightside,
                 open:payload,
                 addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
             }
 
             case 'ADDORUPDATE':
@@ -286,6 +307,23 @@ const stateReducer = (state = initState, action) => {
                 rightside: state.rightside,
                 open:state.open,
                 addorupdate: payload,
+                requestModal: state.requestModal,
+            }
+
+            case 'REQUESTMODEL':
+            return {
+                credintials: { username: payload.username, password: payload.password },
+                token: state.token,
+                data: state.data,
+                branches: state.branches,
+                departments: state.departments,
+                employees: state.employees,
+                totalsalary: state.totalsalary,
+                salary: state.salary,
+                rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
+                requestModal: payload,
             }
 
         default:

@@ -40,7 +40,7 @@ const ChartApp = () => {
         datasets: [
             {
                 label: '# of Votes',
-                data: [dataSet.Managment.length, dataSet.Development.length],
+                data: ['asd','asd'],
                 backgroundColor: [
                     "#F7464A",
                     "#46BFBD",

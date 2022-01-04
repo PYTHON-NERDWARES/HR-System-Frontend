@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationIcon } from '@heroicons/react/outline'
 import { useSelector, useDispatch } from 'react-redux';
 import { openModel } from '../store/states'
+import Testform from './Testform';
 
 const CreateModel = () => {
 
@@ -49,16 +50,8 @@ const CreateModel = () => {
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
                         <div className="inline-block bg-white max-h-[80vh] rounded-lg text-left overflow-x-auto shadow-xl transform transition-all sm:my-8 sm:align-middle w-[70vw] p-5">
-                            <form>
-                                <div className='h-[2000px]'>
-                                <label>
-                                    Name:
-                                    <input type="text" name="name" />
-                                </label>
-                                <input type="submit" value="Submit" />
-                                </div>
-                            </form>
-                            {
+                            <Testform/>
+                            {/* {
                                 state.addorupdate == 'add' &&
                                 <button
                                     type="button"
@@ -75,13 +68,13 @@ const CreateModel = () => {
                                     onClick={() => dispatch(openModel(false))}
                                 >Update
                                 </button>
-                            }
-                            <button
+                            } */}
+                            {/* <button
                                 type="button"
                                 className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                                 onClick={() => dispatch(openModel(false))}
                             >Cancel
-                            </button>
+                            </button> */}
                         </div>
                     </Transition.Child>
                 </div>
