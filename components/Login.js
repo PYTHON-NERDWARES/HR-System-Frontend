@@ -18,15 +18,9 @@ function LoginForm() {
     
     
     const usernameChangeHandler = (e) => {
-        console.log(e.target.value);
-        // console.log(credintials);
-        
     }
 
     const passwordChangeHandler = (e) => {
-        console.log(e.target.value);
-        // console.log(credintials);
-
     }
 
     const logInHandler = (e) =>{

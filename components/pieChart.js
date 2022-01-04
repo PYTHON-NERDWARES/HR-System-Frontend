@@ -32,15 +32,17 @@ const ChartApp = () => {
         }, {});
         return newObj;
     }
-    // console.log(state.data.payload);
+    let depArr= []
     const dataSet = groupBy(state.data.payload, "department")
-    // console.log(8888,dataSet);
+    for (const key in dataSet) {
+        depArr.push(dataSet[key].length)
+    }
     const data = {
         labels: labels,
         datasets: [
             {
                 label: '# of Votes',
-                data: ['asd','asd'],
+                data: depArr,
                 backgroundColor: [
                     "#F7464A",
                     "#46BFBD",

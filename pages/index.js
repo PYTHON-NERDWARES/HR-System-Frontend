@@ -13,7 +13,6 @@ const Home = () => {
 
   useEffect(() => {
     if (cookie.load('token')) {
-      console.log('tooken1', cookie.load('token'));
       dispatch(getToken({token : cookie.load('token')}))
     }
 

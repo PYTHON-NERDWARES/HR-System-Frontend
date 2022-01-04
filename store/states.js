@@ -17,11 +17,11 @@ const initState = {
     open:false,
     addorupdate:'',
     requestModal:false,
+    emInfo:{},
 }
 
 const TotalSalary = (data) => {
     let total = 0
-    console.log(data);
     data.map(element => {
         total += element.salary
     })
@@ -85,6 +85,13 @@ export const getRequest = function (api1, api2, api3, config) {
         }
     };
 };
+
+export const emInfo = (obj) => {
+    return {
+        type: 'EMINFO',
+        payload: obj
+    }
+}
 
 
 export const open_request_Model = (request_Model) => {
@@ -176,6 +183,7 @@ const stateReducer = (state = initState, action) => {
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
+                emInfo:state.emInfo,
             }
 
         case 'GETTOKEN':
@@ -193,6 +201,7 @@ const stateReducer = (state = initState, action) => {
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
+                emInfo:state.emInfo,
             }
 
         case 'GETEMPNO':
@@ -210,6 +219,7 @@ const stateReducer = (state = initState, action) => {
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
+                emInfo:state.emInfo,
             }
 
         case 'GETBRNO':
@@ -227,6 +237,7 @@ const stateReducer = (state = initState, action) => {
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
+                emInfo:state.emInfo,
             }
 
         case 'SETTOTALSALARY':
@@ -244,6 +255,7 @@ const stateReducer = (state = initState, action) => {
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
+                emInfo:state.emInfo,
             }
 
         case 'GETDEPNO':
@@ -260,6 +272,7 @@ const stateReducer = (state = initState, action) => {
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
+                emInfo:state.emInfo,
             }
 
         case 'RIGHTSIDE':
@@ -276,6 +289,7 @@ const stateReducer = (state = initState, action) => {
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
+                emInfo:state.emInfo,
             }
 
             case 'OPENMODEL':
@@ -292,6 +306,7 @@ const stateReducer = (state = initState, action) => {
                 open:payload,
                 addorupdate: state.addorupdate,
                 requestModal: state.requestModal,
+                emInfo:state.emInfo,
             }
 
             case 'ADDORUPDATE':
@@ -308,11 +323,12 @@ const stateReducer = (state = initState, action) => {
                 open:state.open,
                 addorupdate: payload,
                 requestModal: state.requestModal,
+                emInfo:state.emInfo,
             }
 
             case 'REQUESTMODEL':
             return {
-                credintials: { username: payload.username, password: payload.password },
+                credintials: { username: state.username, password: state.password },
                 token: state.token,
                 data: state.data,
                 branches: state.branches,
@@ -324,6 +340,24 @@ const stateReducer = (state = initState, action) => {
                 open:state.open,
                 addorupdate: state.addorupdate,
                 requestModal: payload,
+                emInfo:state.emInfo,
+            }
+
+            case 'EMINFO':
+            return {
+                credintials: { username: state.username, password: state.password },
+                token: state.token,
+                data: state.data,
+                branches: state.branches,
+                departments: state.departments,
+                employees: state.employees,
+                totalsalary: state.totalsalary,
+                salary: state.salary,
+                rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
+                emInfo:payload,
             }
 
         default:

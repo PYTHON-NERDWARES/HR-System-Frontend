@@ -13,7 +13,6 @@ function RequestModal() {
             addorupdate: state.stateReducer.addorupdate
         }
     });
-    console.log(state.requestModal);
 
     const cancelButtonRef = useRef(null)
 

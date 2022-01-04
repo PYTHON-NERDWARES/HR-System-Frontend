@@ -26,7 +26,6 @@ const DashBoard = () => {
 
 
     const state = useSelector((state) => {
-        // console.log(66666,state);
         return {
             data: state.stateReducer.data,
             token: state.stateReducer.token,
@@ -44,21 +43,13 @@ const DashBoard = () => {
 
 
     useEffect(() => {
-        // console.log(hrURL);
         dispatch(getRequest(hrURL, brURL, dpURL, config))
-
-        // dispatch(getRequestBranch(brURL, config))
-
     }, [state.data.data])
 
     const RightSide = (load) => {
         dispatch(rightSide(load))
     }
-    // let buttonColor = "bg-yellow-400 focus:bg-yellow-400 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center rounded-tl-md"
-    // const FirstBTN = (load) => {
-    //     buttonColor = 'focus:bg-yellow-400 bg-gray-100 py-2 border-2 w-1/2 hover:bg-yellow-400 text-center rounded-tl-md'
-    //     dispatch(rightSide(load))
-    // }
+   
 
 
     return (
@@ -166,7 +157,6 @@ const DashBoard = () => {
                                         {
                                             state.data.payload &&
                                             state.data.payload.map(element => {
-                                                console.log(element);
                                                 return (
                                                     element.role == 'Branch Manager' &&
                                                     <div>

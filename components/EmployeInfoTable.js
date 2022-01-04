@@ -5,7 +5,7 @@ import MaterialTable from "material-table";
 import Image from 'next/image'
 import logo from '../assets/p.jpg'
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteRequest, getRequest , openModel , addOrUpdate} from '../store/states'
+import { deleteRequest, getRequest, openModel, addOrUpdate, emInfo } from '../store/states'
 import CreateModel from './createmodel';
 import { useState } from 'react'
 
@@ -25,7 +25,7 @@ const EmployeesTable = () => {
     return {
       data: state.stateReducer.data,
       token: state.stateReducer.token,
-      open:state.stateReducer.open
+      open: state.stateReducer.open
     }
   });
 
@@ -40,12 +40,44 @@ const EmployeesTable = () => {
   })
 
   const data = emData;
-  console.log(1225546, data);
   const actions = [
     {
       icon: 'edit',
       tooltip: 'Update Employee',
       onClick: (event, rowData) => {
+        let arr = []
+        state.data.payload.map(element => {
+          if (element.employee_id == rowData.employee_id) {
+            console.log(element);
+
+            arr.push(element)
+          }
+        })
+
+        let empInfo = {
+          first_name: arr[0].first_name,
+          last_name: arr[0].last_name,
+          email: arr[0].email,
+          phone: arr[0].phone,
+          role: arr[0].role,
+          work_type: arr[0].work_type,
+          experience: arr[0].experience,
+          username: arr[0].username,
+          password: arr[0].password,
+          salary: arr[0].salary,
+          gender: arr[0].gender,
+          marital_status: arr[0].marital_status,
+          nationality: arr[0].nationality,
+          department: arr[0].department,
+          branch: arr[0].branch,
+          Personal_Picture: arr[0].Personal_Picture,
+          employee_id: arr[0].employee_id,
+          is_superuser: arr[0].is_superuser,
+          is_staff: arr[0].is_staff,
+          is_active: arr[0].is_active,
+          id:arr[0].id
+        }
+        dispatch(emInfo(empInfo))
         dispatch(addOrUpdate("update"))
         dispatch(openModel(true))
       }
@@ -81,6 +113,7 @@ const EmployeesTable = () => {
       tooltip: 'Add User',
       isFreeAction: true,
       onClick: (event) => {
+        dispatch(emInfo({}))
         dispatch(addOrUpdate("add"))
         dispatch(openModel(true))
 
@@ -180,7 +213,7 @@ const EmployeesTable = () => {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <MaterialTable className="" title="Employee Details" data={data} columns={columns} actions={actions} options={{ search: true, paging: true, filtering: true, exportButton: true, doubleHorizontalScroll: true, defaultExpanded: 'true', loadingType: 'linear', actionsColumnIndex: -1 }} />
       </div>
-      
+
 
     </div>
   )

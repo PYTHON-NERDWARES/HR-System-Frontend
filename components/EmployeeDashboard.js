@@ -43,8 +43,6 @@ const EmployeeDashBoard = () => {
     }
     const open_request = (load) => {
         dispatch(open_request_Model(load))
-        console.log(state.requestModal);
-        console.log(load);
     }
 
 
