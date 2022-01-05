@@ -53,7 +53,7 @@ import Image from 'next/image';
                         <div class="content">
                             <h2>Malak Khasawneh</h2>
                             <p>Full Stack Developer with Background in Pharmacy</p>
-                            <a href="https://github.com/malakkhasawneh2" target="_blank"><i style={{textAlign: "center"}} class="fab fa-github fa-2x"> Github</i></a>
+                            <a href="https://raw.githubusercontent.com/PYTHON-NERDWARES/HR-System-Frontend/main/assets/malak.jpg" target="_blank"><i style={{textAlign: "center"}} class="fab fa-github fa-2x"> Github</i></a>
                         </div>
                         <img src="" alt="Malak Khasawneh"/>
                     </div>
