@@ -1,0 +1,20 @@
+"access":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMzc0MzczLCJpYXQiOjE2NDEyODc5NzMsImp0aSI6ImExMzM0NjFlMDE3MzQxNGJiNmM3ZTE2N2UyYTRkMWU1IiwidXNlcl9pZCI6MSwicm9sZSI6IkhSIiwidXNlcm5hbWUiOiJhZG1pbiIsIlBlcnNvbmFsX1BpY3R1cmUiOiJpbWFnZXMvSU1HXzAxMjVfNTAuanBnIiwiZmlyc3RfbmFtZSI6IkFuYXMiLCJsYXN0X25hbWUiOiJBYnUgSGF0YWIifQ.REy_zJlKXa4L1bvDI23EUJdNHq2q7JUJqhc9LRfb-gE"
+
+{
+            "first_name":"Ahmad",
+            "last_name":"Ahmad", 
+            "email":"AH@ah.com", 
+            "phone":"+962798546231", 
+            "role":"HR", 
+            "work_type":"remote", 
+            "experience":"1", 
+            "username":"admin5", 
+            "password":"Admin@1234", 
+            "salary":"5000", 
+            "gender":"Male", 
+            "marital_status":"Single", 
+            "nationality":"Canadian", 
+            "department":1, 
+            "branch":1, 
+            "Personal_Picture":selectedFile, 
+        }
