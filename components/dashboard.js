@@ -10,6 +10,7 @@ import jsonwebtoken from 'jsonwebtoken';
 import EmployeesTable from './EmployeInfoTable'
 import CreateModel from './createmodel';
 import BranchInfoTable from './BranchInfoTable';
+import Calendarx from './Calendarx';
 
 
 
@@ -203,6 +204,16 @@ const DashBoard = () => {
 
                     {
                         state.rightside == "Branchs" &&
+                        <BranchInfoTable />
+                    }
+
+                    {
+                        state.rightside == "Calendar" &&
+                        <Calendarx />
+                    }
+
+                    {
+                        state.rightside == "Profile" &&
                         <BranchInfoTable />
                     }
 
