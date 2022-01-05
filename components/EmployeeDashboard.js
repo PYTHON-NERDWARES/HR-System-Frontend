@@ -7,7 +7,7 @@ import jsonwebtoken from 'jsonwebtoken';
 import { useEffect } from 'react';
 import RequestModal from './RequestModal';
 import Calendarx from './Calander';
-import Profile from './EmployeesDetails';
+import EmployeesProfile from './EmployeesProfile';
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
 const emURL = baseUrl + 'hr/'
@@ -160,7 +160,7 @@ const EmployeeDashBoard = () => {
                 }
                 {
                     state.rightside == "Profile" &&
-                    <Profile/>
+                    <EmployeesProfile/>
                 }
                 <RequestModal />
             </div>}

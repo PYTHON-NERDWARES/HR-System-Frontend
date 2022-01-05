@@ -5,8 +5,6 @@ import Header from './Header'
 import jsonwebtoken from 'jsonwebtoken';
 import { useSelector , useDispatch } from 'react-redux';
 import EmployeeDashBoard from './EmployeeDashboard'
-import EmployeesDetails from './EmployeesDetails'
-import EmployeesPage from './EmployeesPage'
 import ManagerDashboard from './managerdashboard';
 
 

@@ -80,7 +80,7 @@ export const getRequest = function (api1, api2, api3, config) {
                     response.data.map(element => {
                         console.log(element);
 
-                        if (element.branch == "Amman" && element.role != "HR" && element.role != "Branch Manager") {
+                        if (element.branch == "Amman" && element.role != "HR" ) {
                             data.push(element)
                         }
                     })

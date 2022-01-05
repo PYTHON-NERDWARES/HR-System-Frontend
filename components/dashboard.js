@@ -9,17 +9,15 @@ import { getRequest, rightSide } from '../store/states'
 import jsonwebtoken from 'jsonwebtoken';
 import EmployeesTable from './EmployeInfoTable'
 import CreateModel from './createmodel';
-import Branches from './Branch';
-import Profile from './EmployeesDetails';
 import BranchInfoTable from './BranchInfoTable';
 import Calendarx from './Calander';
+import Profile from './Profile'
 
 
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
 const hrURL = baseUrl + 'hr/'
 const brURL = hrURL + 'branch'
-const imURL = process.env.NEXT_PUBLIC_IMAGE_LINK
 const dpURL = hrURL + 'department'
 
 

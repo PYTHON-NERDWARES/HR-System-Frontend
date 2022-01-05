@@ -10,7 +10,7 @@ import jsonwebtoken from 'jsonwebtoken';
 import EmployeesTable from './EmployeInfoTable'
 import CreateModel from './createmodel';
 import Branches from './Branch';
-import Profile from './EmployeesDetails';
+import Profile from './Profile';
 import Calander from './Calander.js';
 
 
