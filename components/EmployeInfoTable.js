@@ -95,7 +95,7 @@ const EmployeesTable = () => {
         })
           .then((willDelete) => {
             if (willDelete) {
-              dispatch(deleteRequest(baseUrl + `hr/${rowData.id}/update-delete`, config)).then(() => {
+              dispatch(deleteRequest(baseUrl + `hr/${rowData.id}/update-delete/`, config)).then(() => {
                 dispatch(getRequest(hrURL, brURL, dpURL, config))
               }
               )

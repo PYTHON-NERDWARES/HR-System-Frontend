@@ -10,7 +10,7 @@ import jsonwebtoken from 'jsonwebtoken';
 import EmployeesTable from './EmployeInfoTable'
 import CreateModel from './createmodel';
 import Branches from './Branch';
-import Profile from './EmployeesDetails';
+import Profile from './Profile';
 import Calander from './Calander.js';
 
 
@@ -77,11 +77,10 @@ const ManagerDashboard = () => {
                         state.rightSide == "Dashboard" &&
 
                     } */}
-                            <button autoFocus onClick={() => RightSide("Dashboard")} className='w-1/2 py-2 text-center bg-gray-100 border-2 focus:bg-yellow-400 hover:bg-yellow-400 rounded-tl-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faHome} style={{ width: "30px", height: '30px' }} />Dashboard</button>
-                            <button onClick={() => RightSide("Employees")} className='w-1/2 py-2 text-center border-2 focus:bg-yellow-400 hover:bg-yellow-400 rounded-tr-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faUsers} style={{ width: "30px", height: '30px' }} />Employees</button>
-                            <button onClick={() => RightSide("Branchs")} className='w-1/2 py-2 text-center border-2 focus:bg-yellow-400 hover:bg-yellow-400'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faBuilding} style={{ width: "30px", height: '30px' }} />Branch Info</button>
-                            <button onClick={() => RightSide("Calendar")} className='w-1/2 py-2 text-center border-2 focus:bg-yellow-400 hover:bg-yellow-400'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faCalendarAlt} style={{ width: "30px", height: '30px' }} />Calendar</button>
-                            <button onClick={() => RightSide("Profile")} className='w-full py-2 text-center border-2 focus:bg-yellow-400 hover:bg-yellow-400 rounded-b-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faUser} style={{ width: "30px", height: '30px' }} />Profile</button>
+                            <button autoFocus onClick={() => RightSide("Dashboard")} className='w-1/2 py-2 text-center border-violet-800 bg-gray-100 border-1 focus:bg-yellow-400 hover:bg-yellow-400 rounded-tl-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faHome} style={{ width: "30px", height: '30px' }} />Dashboard</button>
+                            <button onClick={() => RightSide("Employees")} className='w-1/2 py-2 text-center border-violet-800 border-1 focus:bg-yellow-400 hover:bg-yellow-400 rounded-tr-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faUsers} style={{ width: "30px", height: '30px' }} />Employees</button>
+                            <button onClick={() => RightSide("Calendar")} className='w-1/2 py-2 text-center border-violet-800 border-1 focus:bg-yellow-400 hover:bg-yellow-400 rounded-bl-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faCalendarAlt} style={{ width: "30px", height: '30px' }} />Calendar</button>
+                            <button onClick={() => RightSide("Profile")} className='w-1/2 py-2 text-center border-violet-800 border-1 focus:bg-yellow-400 hover:bg-yellow-400 rounded-br-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faUser} style={{ width: "30px", height: '30px' }} />Profile</button>
                         </div>
                     </div>
 
@@ -149,7 +148,7 @@ const ManagerDashboard = () => {
                                 {/* Branches and Managers */}
                                 <div className='py-3 bg-gray-100 mt-4 w-5/12 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
                                     <div className='w-11/12 mx-auto '>
-                                        <h3 className='text-left'>Department & Managers</h3>
+                                        <h3 className='text-left'>Department Managers</h3>
                                     </div>
                                     <hr />
                                     {/* manager profile */}
@@ -158,8 +157,8 @@ const ManagerDashboard = () => {
                                             state.data.payload &&
                                             state.data.payload.map(element => {
                                                 return (
-                                                    
-                                                    element.role == 'Department Manager' && 
+
+                                                    element.role == 'Department Manager' &&
                                                     <div>
                                                         {
                                                             console.log("hiiiiiiiii")
@@ -211,12 +210,14 @@ const ManagerDashboard = () => {
 
                     {
                         state.rightside == "Calendar" &&
-                        <Calander/>
+                        <div className='w-3/4'>
+                            <Calander />
+                        </div>
                     }
 
                     {
                         state.rightside == "Profile" &&
-                        <Profile/>
+                        <Profile />
                     }
 
                 </div>}

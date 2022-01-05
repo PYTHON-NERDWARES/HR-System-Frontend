@@ -491,7 +491,7 @@ const Testform = () => {
                                                     <label htmlFor="staff" className="font-medium text-gray-700">
                                                         Staff
                                                     </label>
-                                                    <p className="text-gray-500">Giving the user full authority on the site</p>
+                                                    <p className="text-gray-500">Give the use permission to login</p>
                                                 </div>
                                             </div>
 
@@ -509,7 +509,7 @@ const Testform = () => {
                                                     <label htmlFor="active" className="font-medium text-gray-700">
                                                         Active
                                                     </label>
-                                                    <p className="text-gray-500">Giving the user full authority on the site</p>
+                                                    <p className="text-gray-500">The use is currently employeed</p>
                                                 </div>
                                             </div>
 

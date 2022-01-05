@@ -160,7 +160,7 @@ const BranchInfoTable = () => {
       <div className='w-11/12 mx-auto mt-4'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <MaterialTable className=""
-          title="Employee Details"
+          title="Branches Details"
           data={data} columns={columns}
           actions={actions}
           options={{headerStyle: {

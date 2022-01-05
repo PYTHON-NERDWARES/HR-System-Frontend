@@ -10,6 +10,7 @@ import swal from 'sweetalert';
 const Home = () => {
 
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     if (cookie.load('token')) {

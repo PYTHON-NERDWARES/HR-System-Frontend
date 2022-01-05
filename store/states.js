@@ -20,6 +20,7 @@ const initState = {
     emInfo: {},
     id:0,
     open_branch_form:false,
+    aboutus:false,
 }
 
 const TotalSalary = (data) => {
@@ -77,10 +78,11 @@ export const getRequest = function (api1, api2, api3, config) {
                 axios.get(api1, config).then((response) => {
                     dispatch(getId({ payload: response.data.at(-1).id }))
                     let data = []
+                    let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
                     response.data.map(element => {
                         console.log(element);
 
-                        if (element.branch == "Amman" && element.role != "HR" && element.role != "Branch Manager") {
+                        if (element.branch == decodedPayload.branch && element.role != "HR" ) {
                             data.push(element)
                         }
                     })
@@ -93,10 +95,11 @@ export const getRequest = function (api1, api2, api3, config) {
 
                 axios.get(api2, config).then((response) => {
                     let data = []
+                    let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
                     response.data.map(element => {
                         console.log(element);
 
-                        if (element.name == "Amman") {
+                        if (element.name == decodedPayload.branch) {
                             data.push(element)
                         }
                     })
@@ -104,10 +107,11 @@ export const getRequest = function (api1, api2, api3, config) {
                 }),
                 axios.get(api3, config).then((response) => {
                     let data = []
+                    let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
                     response.data.map(element => {
                         console.log(element);
 
-                        if (element.branch == "Amman") {
+                        if (element.branch == decodedPayload.branch) {
                             data.push(element)
                         }
                     })
@@ -158,6 +162,13 @@ export const open_request_Model = (request_Model) => {
     return {
         type: 'REQUESTMODEL',
         payload: request_Model
+    }
+}
+
+export const aboutUs = (bool) => {
+    return {
+        type: 'ABOUTUS',
+        payload: bool
     }
 }
 
@@ -246,6 +257,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'GETTOKEN':
@@ -266,6 +278,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'GETEMPNO':
@@ -286,6 +299,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'GETBRNO':
@@ -306,6 +320,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'SETTOTALSALARY':
@@ -326,6 +341,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'GETDEPNO':
@@ -345,6 +361,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'RIGHTSIDE':
@@ -364,6 +381,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'OPENMODEL':
@@ -383,6 +401,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'ADDORUPDATE':
@@ -402,6 +421,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'REQUESTMODEL':
@@ -421,6 +441,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
         case 'EMINFO':
@@ -440,6 +461,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: payload,
                 id:state.id,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
             case 'GETID':
@@ -459,6 +481,7 @@ const stateReducer = (state = initState, action) => {
                 emInfo: state.emInfo,
                 id:payload,
                 open_branch_form:state.open_branch_form,
+                aboutus:state.aboutus,
             }
 
             case 'REQUESTBRANCHMODEL':
@@ -478,8 +501,28 @@ const stateReducer = (state = initState, action) => {
                 emInfo:state.emInfo,
                 id:state.id,
                 open_branch_form:payload,
+                aboutus:state.aboutus,
             }
 
+            case 'ABOUTUS':
+            return {
+                credintials: { username: state.username, password: state.password },
+                token: state.token,
+                data: state.data,
+                branches: state.branches,
+                departments: state.departments,
+                employees: state.employees,
+                totalsalary: state.totalsalary,
+                salary: state.salary,
+                rightside: state.rightside,
+                open:state.open,
+                addorupdate: state.addorupdate,
+                requestModal: state.requestModal,
+                emInfo:state.emInfo,
+                id:state.id,
+                open_branch_form:state.open_branch_form,
+                aboutus:payload,
+            }
         default:
             return state;
     }

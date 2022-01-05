@@ -48,18 +48,25 @@ function Calendarx() {
     }
 
     return (
-        <div className="App">
-            <h1>Calendar</h1>
+        <div className="App w-11/12 mx-auto mt-4 border-1 px-4 py-2 shadow">
+            
+            <div className=''>
+
+            <h1 className='mb-3 text-center text-violet-800'>Calendar</h1>
+            <hr />
+            <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
+
             <h2>Add New Event</h2>
-            <div>
-                <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }} value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-                <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
-                <DatePicker placeholderText="End Date" selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
-                <button stlye={{ marginTop: "10px" }} onClick={handleAddEvent}>
+            <div className="col-span-6 sm:col-span-3 mb-4">
+                <input className="border-1 border-violet-600 mt-1 block w-1/3 shadow-sm sm:text-ms py-1 pl-5 rounded-md" type="text" placeholder="Add Title" style={{ marginRight: "10px" }} value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
+                <DatePicker className="z-50 border-1 border-violet-600 mt-1 block w-1/3 shadow-sm sm:text-ms py-1 pl-5 rounded-md" placeholderText="Start Date" style={{ marginRight: "10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
+                <DatePicker className="border-1 border-violet-600 mt-1 block w-1/3 shadow-sm sm:text-ms py-1 pl-5 rounded-md" placeholderText="End Date" selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
+                <button stlye={{ marginTop: "10px" }} className='bg-yellow-400 w-1/12 rounded-md mt-1 border-1 border-black ml-[250px]' onClick={handleAddEvent}>
                     Add Event
                 </button>
             </div>
-            <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
+        
+            </div>
         </div>
     );
 }
