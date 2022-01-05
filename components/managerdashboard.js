@@ -11,6 +11,7 @@ import EmployeesTable from './EmployeInfoTable'
 import CreateModel from './createmodel';
 import Branches from './Branch';
 import Profile from './EmployeesDetails';
+import Calander from './Calander.js';
 
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
@@ -210,7 +211,7 @@ const ManagerDashboard = () => {
 
                     {
                         state.rightside == "Calendar" &&
-                        <p>Not Ready Yet</p>
+                        <Calander/>
                     }
 
                     {

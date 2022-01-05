@@ -11,7 +11,8 @@ import EmployeesTable from './EmployeInfoTable'
 import CreateModel from './createmodel';
 import Branches from './Branch';
 import Profile from './EmployeesDetails';
-
+import BranchInfoTable from './BranchInfoTable';
+import Calendarx from './Calander';
 
 
 
@@ -204,12 +205,12 @@ const DashBoard = () => {
 
                     {
                         state.rightside == "Branchs" &&
-                        <Branches />
+                        <BranchInfoTable />
                     }
 
                     {
                         state.rightside == "Calendar" &&
-                        <p>Not Ready Yet</p>
+                        <Calendarx/>
                     }
 
                     {
