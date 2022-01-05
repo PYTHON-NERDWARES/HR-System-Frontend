@@ -28,8 +28,8 @@ const Header = () => {
                 </Navbar.Brand>
 
                 <div className='w-2/5'>
-                    <div className='flex'>
-                        <Form className="d-flex">
+                    <div className='flex justify-evenly'>
+                        {/* <Form className="d-flex">
                             <FormControl
                                 type="search"
                                 placeholder="Search"
@@ -37,12 +37,21 @@ const Header = () => {
                                 aria-label="Search"
                             />
                             <button className='-ml-10 px-2 bg-yellow-400 rounded-md mr-6 hover:bg-yellow-300'>Search</button>
-                        </Form>
-                        <Navbar className='p-0' id="responsive-navbar-nav">
-                            <Nav className="me-auto">
-                                <Link href="/contact" ><Nav.Link className="text-xl font-bold text-white hover:bg-yellow-400 rounded-md">Home</Nav.Link></Link>
-                                <Link href="/about" ><Nav.Link className="text-xl font-bold text-white hover:bg-yellow-400 rounded-md">About Us</Nav.Link></Link>
-                                <button onClick={LogOut} ><Nav.Link className="text-xl font-bold text-white hover:bg-yellow-400 rounded-md">Logout</Nav.Link></button>
+                        </Form> */}
+                        <Navbar className='p-0 w-3/4' id="responsive-navbar-nav">
+                            <Nav className="ml-40 flex justify-evenly w-full">
+                                <div>
+
+                                <Link  href="/contact" ><Nav.Link className="text-xl font-bold text-white bg-yellow-400 hover:bg-yellow-500 rounded-md">Home</Nav.Link></Link>
+                                </div>
+                                <div>
+
+                                <Link href="/about" ><Nav.Link className="text-xl font-bold text-white bg-yellow-400 hover:bg-yellow-500 rounded-md">About Us</Nav.Link></Link>
+                                </div>
+                                <div>
+
+                                <button onClick={LogOut} ><Nav.Link className="text-xl font-bold text-white bg-yellow-400 hover:bg-yellow-500 rounded-md">Logout</Nav.Link></button>
+                                </div>
 
                             </Nav>
 

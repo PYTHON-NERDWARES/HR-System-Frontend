@@ -163,7 +163,10 @@ const BranchInfoTable = () => {
           title="Employee Details"
           data={data} columns={columns}
           actions={actions}
-          options={{
+          options={{headerStyle: {
+            backgroundColor: '#624FB6',
+            color: '#FFF'
+          },
             search: true,
             paging: true,
             filtering: true,

@@ -6,6 +6,8 @@ import { getRequest, rightSide, open_request_Model } from '../store/states'
 import jsonwebtoken from 'jsonwebtoken';
 import { useEffect } from 'react';
 import RequestModal from './RequestModal';
+import Calendarx from './Calander';
+import Profile from './EmployeesDetails';
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
 const emURL = baseUrl + 'hr/'
@@ -35,7 +37,7 @@ const EmployeeDashBoard = () => {
     }
 
     useEffect(() => {
-        dispatch(getRequest(emURL + `${decodedPayload.user_id}`, brURL, dpURL, config))
+        dispatch(getRequest(emURL + `${decodedPayload.user_id}/`, brURL, dpURL, config))
     }, [state.data.data])
 
     const RightSide = (load) => {
@@ -154,7 +156,11 @@ const EmployeeDashBoard = () => {
 
                 {
                     state.rightside == "Calendar" &&
-                    <h1>No</h1>
+                    <Calendarx />
+                }
+                {
+                    state.rightside == "Profile" &&
+                    <Profile/>
                 }
                 <RequestModal />
             </div>}

@@ -118,7 +118,6 @@ export const getRequest = function (api1, api2, api3, config) {
         else {
             return (
                 axios.get(api1, config).then((response) => {
-                    dispatch(getId({ payload: response.data.at(-1).id }))
                     dispatch(getEmpNo({ payload: response.data }));
                     dispatch(setTotalSalary({ payload: response.data.salary }));
                 }),
