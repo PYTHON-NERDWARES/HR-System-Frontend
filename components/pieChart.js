@@ -60,7 +60,12 @@ console.log(colorPallet);
             },
         ],
     };
-    return <Pie data={data} />;
+    const options = {
+        plugins: {
+            legend: false,
+          }
+    }
+    return <Pie data={data} options={options}/>;
 }
 
 export default ChartApp
