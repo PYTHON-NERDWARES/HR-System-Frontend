@@ -1,13 +1,7 @@
 import React from 'react'
-import Table from 'react-bootstrap/Table'
-import { MDBDataTable } from 'mdbreact';
 import MaterialTable from "material-table";
-import Image from 'next/image'
-import logo from '../assets/p.jpg'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteRequest, getRequest, openModel, addOrUpdate, emInfo } from '../store/states'
-import CreateModel from './createmodel';
-import { useState } from 'react'
 
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
@@ -18,8 +12,6 @@ const dpURL = hrURL + 'department'
 
 const EmployeesTable = () => {
   const dispatch = useDispatch();
-
-  // const [openM, setOpenM] = useState(false)
 
   const state = useSelector((state) => {
     return {
@@ -48,7 +40,6 @@ const EmployeesTable = () => {
         let arr = []
         state.data.payload.map(element => {
           if (element.employee_id == rowData.employee_id) {
-            console.log(element);
 
             arr.push(element)
           }

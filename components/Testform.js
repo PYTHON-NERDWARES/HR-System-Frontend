@@ -33,12 +33,10 @@ const Testform = () => {
         setSelectedFile(state.emInfo.Personal_Picture || selectedFile)
     }, [selectedFile])
 
-    // console.log(211111111111111111111111,state.id);
 
     const config = {
         headers: { "Authorization": `Bearer ${state.token.token.access}` }
     }
-    // console.log(state.emInfo.password);
     let newDate = new Date()
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
@@ -97,7 +95,6 @@ const Testform = () => {
                 is_active: e.target.is_active.checked,
             }
         }
-        console.log(info);
         if (state.addorupdate == "add") {
 
             axios.post(saveURL, info, config).then(() => {
@@ -109,7 +106,6 @@ const Testform = () => {
         }
         else {
             axios.put(baseUrl + `hr/${state.emInfo.id}/update-delete/`, info, config).then(() => {
-                console.log(23132123, `${state.emInfo.id}/update-delete/`);
                 swal("Good job!", "The data has been updated!", "success").then(() => {
                     dispatch(emInfo({}))
                     dispatch(getRequest(hrURL, brURL, dpURL, config))
@@ -301,17 +297,9 @@ const Testform = () => {
                                                         className="border-1 border-violet-600 mt-1 block w-full shadow-sm sm:text-ms py-1 pl-5 rounded-md"
                                                     />
                                                     <label className="block text-sm font-medium text-gray-700"> Password </label>
-                                                    {/* {!state.emInfo.username && */}
 
                                                     <input required defaultValue={state.emInfo.password || ""} name='password' className="border-1 border-violet-600 mt-1 block w-full shadow-sm sm:text-ms py-1 pl-5 rounded-md" type="password" />
-                                                    {/* // } */}
-                                                    {/* {state.emInfo.username &&
-                                                        <>
-                                                            <input defaultValue={state.emInfo.password || ""} name='password' className="border-1 border-violet-600 mt-1 block w-full shadow-sm sm:text-ms py-1 pl-5 rounded-md" type="password" />
 
-                                                            <p className='text-sm ml-4 text-gray-400 mt-1 mb-0'>Keep the password field empty if you don't want to change the old password</p>
-                                                        </>
-                                                    } */}
                                                 </div>
 
                                                 <div className="col-span-6">
@@ -520,7 +508,6 @@ const Testform = () => {
                                                     <button
                                                         type="submit"
                                                         className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                    // onClick={saveHandler}
                                                     >Save
                                                     </button>
                                                 }
@@ -529,7 +516,6 @@ const Testform = () => {
                                                     <button
                                                         type="submit"
                                                         className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                    // onClick={() => dispatch(openModel(false))}
                                                     >Update
                                                     </button>
                                                 }

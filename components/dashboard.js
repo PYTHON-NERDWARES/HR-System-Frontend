@@ -9,7 +9,6 @@ import { getRequest, rightSide } from '../store/states'
 import jsonwebtoken from 'jsonwebtoken';
 import EmployeesTable from './EmployeInfoTable'
 import CreateModel from './createmodel';
-import Branches from './Branch';
 import Profile from './Profile';
 import BranchInfoTable from './BranchInfoTable';
 import Calendarx from './Calander';
@@ -19,7 +18,6 @@ import Calendarx from './Calander';
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
 const hrURL = baseUrl + 'hr/'
 const brURL = hrURL + 'branch'
-const imURL = process.env.NEXT_PUBLIC_IMAGE_LINK
 const dpURL = hrURL + 'department'
 
 
@@ -76,10 +74,7 @@ const DashBoard = () => {
 
                         {/* buttons */}
                         <div className='flex flex-wrap py-3 bg-gray-100 mt-4 ml-10 px-10 rounded-md shadow-[0_3px_15px_-4px_rgba(0,0,0,0.3)] text-center'>
-                            {/* {
-                        state.rightSide == "Dashboard" &&
-
-                    } */}
+ 
                             <button autoFocus onClick={() => RightSide("Dashboard")} className='w-1/2 py-2 text-center bg-gray-100 border-1 border-violet-800 focus:bg-yellow-400 hover:bg-yellow-400 rounded-tl-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faHome} style={{ width: "30px", height: '30px' }} />Dashboard</button>
                             <button onClick={() => RightSide("Employees")} className='w-1/2 py-2 text-center border-1 focus:bg-yellow-400 border-violet-800 hover:bg-yellow-400 rounded-tr-md'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faUsers} style={{ width: "30px", height: '30px' }} />Employees</button>
                             <button onClick={() => RightSide("Branchs")} className='w-1/2 py-2 text-center border-1 focus:bg-yellow-400 border-violet-800 hover:bg-yellow-400'><FontAwesomeIcon className='block mx-auto text-gray-800' icon={faBuilding} style={{ width: "30px", height: '30px' }} />Branches</button>

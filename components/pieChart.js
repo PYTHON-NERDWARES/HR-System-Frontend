@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 let colors = require("./colorPallet.json")
 
 
@@ -24,7 +24,6 @@ const ChartApp = () => {
         colorPallet.push('#'+ Math.floor(Math.random() * 19777215).toString(16))
         return (element.name)
     })
-console.log(colorPallet);
     const groupBy = (arr, criteria) => {
         const newObj = arr.reduce(function (acc, currentValue) {
             if (!acc[currentValue[criteria]]) {
@@ -36,7 +35,6 @@ console.log(colorPallet);
         return newObj;
     }
     let depArr= []
-    console.log("Chart",state.data.payload);
     const dataSet = groupBy(state.data.payload, "department")
     for (const key in dataSet) {
         depArr.push(dataSet[key].length)

@@ -3,15 +3,10 @@ import DashBoard from './dashboard'
 import Footer from './Footer'
 import Header from './Header'
 import jsonwebtoken from 'jsonwebtoken';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import EmployeeDashBoard from './EmployeeDashboard'
 import ManagerDashboard from './managerdashboard';
 import AboutUS from './AboutUs';
-
-
-
-
-
 
 
 const Main = () => {

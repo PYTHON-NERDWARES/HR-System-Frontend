@@ -2,11 +2,9 @@ import React from 'react'
 import Head from 'next/head';
 import Image from 'next/image'
 import headerLogo from '../assets/finallogo1.png';
-import {useSelector, useDispatch} from 'react-redux';
-import { getCredintials , getToken } from '../store/states';
-import {postRequest , getBrNo} from '../store/states'
-
-
+import {useDispatch} from 'react-redux';
+import { getCredintials  } from '../store/states';
+import {postRequest } from '../store/states'
 
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
 const tokenUrl = baseUrl + 'api/token/';

@@ -12,7 +12,6 @@ const dpURL = hrURL + 'department'
 
 
 const BranchInfoTable = () => {
-  // ######################################################################
 
   const dispatch = useDispatch();
 
@@ -182,7 +181,6 @@ const BranchInfoTable = () => {
     </div>
   )
 
-  // #####################################################################
 }
 
 export default BranchInfoTable

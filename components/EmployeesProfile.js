@@ -1,7 +1,5 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import jsonwebtoken from 'jsonwebtoken';
-
 
 const EmployeesProfile = () => {
 
@@ -15,14 +13,6 @@ const EmployeesProfile = () => {
             departments: state.stateReducer.departments,
         }
     });
-    let decodedPayload = jsonwebtoken.decode(state.token.token.access)
-    console.log(state.data.payload)
-    // let prfile_data = state.data.payload.map((item)=>{
-    //     let data = []
-    //     state.data.payload.item.id == decodedPayload.user_id && data.push(item)
-    //     return data
-    // })
-
     return (
         <>
             {state.data.payload &&
