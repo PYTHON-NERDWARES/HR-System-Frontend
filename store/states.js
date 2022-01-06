@@ -2,8 +2,6 @@ import axios from "axios"
 import cookie from 'react-cookies'
 import jsonwebtoken from 'jsonwebtoken';
 
-
-
 const initState = {
     credintials: { username: '', password: '' },
     token: "",
@@ -57,7 +55,6 @@ export const deleteRequest = function (api, config) {
 export const getRequest = function (api1, api2, api3, config) {
     return (dispatch) => {
         let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
-        console.log("Decoded Toke", decodedPayload);
         if (decodedPayload.role == "HR") {
             return (
                 axios.get(api1, config).then((response) => {
@@ -80,7 +77,6 @@ export const getRequest = function (api1, api2, api3, config) {
                     let data = []
                     let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
                     response.data.map(element => {
-                        console.log(element);
 
                         if (element.branch == decodedPayload.branch && element.role != "HR" ) {
                             data.push(element)
@@ -97,7 +93,6 @@ export const getRequest = function (api1, api2, api3, config) {
                     let data = []
                     let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
                     response.data.map(element => {
-                        console.log(element);
 
                         if (element.name == decodedPayload.branch) {
                             data.push(element)
@@ -109,7 +104,6 @@ export const getRequest = function (api1, api2, api3, config) {
                     let data = []
                     let decodedPayload = jsonwebtoken.decode(cookie.load('token').access)
                     response.data.map(element => {
-                        console.log(element);
 
                         if (element.branch == decodedPayload.branch) {
                             data.push(element)

@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from 'next/image'
 import headerLogo from '../assets/finallogo1.png';
 import Link from 'next/link';
-import Navbar from 'react-bootstrap/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faYoutube, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
@@ -33,7 +32,6 @@ const Footer = () => {
                     <ul>
                         <li className='text-yellow-400 font-black text-lg'>Contact</li>
                         <li><a className='text-gray-100 no-underline hover:text-zinc-300 font-bold' href="#">+962 7990894852 / +962 7854599224</a></li>
-                        {/* <li><a className='text-gray-100 no-underline hover:text-zinc-300 font-bold' href="#"></a></li> */}
                         <li><a className='text-gray-100 no-underline hover:text-zinc-300 font-bold' href="#">contact@FlawlessMasters.com</a></li>
                     </ul>
                 </div>

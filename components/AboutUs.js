@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import feras from '../assets/feras.jpg'
-import eslam from '../assets/eslam.jpg'
-import malak from '../assets/malak.jpg'
-import anas from '../assets/anas.jpg'
-import Image from 'next/image';
 
     class AboutUS extends Component {
         render() {

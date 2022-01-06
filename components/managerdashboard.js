@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faUsers, faCodeBranch, faBuilding, faCalendarAlt, faUser, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUsers, faCodeBranch, faCalendarAlt, faUser, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons'
 import ChartApp from './pieChart';
 import AdminEventTable from './admineventtable';
 import { useSelector, useDispatch } from 'react-redux';
@@ -160,9 +160,6 @@ const ManagerDashboard = () => {
 
                                                     element.role == 'Department Manager' &&
                                                     <div>
-                                                        {
-                                                            console.log("hiiiiiiiii")
-                                                        }
                                                         <div className='w-11/12 mx-auto my-3 text-left'>
                                                             <div className='flex'>
                                                                 <div className='flex w-8/12'>

@@ -12,7 +12,6 @@ import EmployeesProfile from './EmployeesProfile';
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
 const emURL = baseUrl + 'hr/'
 const brURL = emURL + 'branch'
-const imURL = process.env.NEXT_PUBLIC_IMAGE_LINK
 const dpURL = emURL + 'department'
 
 const EmployeeDashBoard = () => {

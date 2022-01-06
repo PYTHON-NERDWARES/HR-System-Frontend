@@ -10,6 +10,14 @@
 4. Mohammad AbdulGhafour
 5. Malak Khasawneh
 
+[Live URL](https://hr-system-lac.vercel.app/)
+### To login :
+* UserName : Anas
+* Password : Admin@1234
+
+[BackEnd Repo](https://github.com/PYTHON-NERDWARES/HR-System-Backend)
+
+
 [Team Agreement](TeamAgreement.md)
 
 [Software Requirements](Requirements.md)
